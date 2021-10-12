@@ -1,4 +1,4 @@
-import './Product.scss';
+import './product.scss';
 
 import React from 'react';
 import { useParams } from 'react-router-dom';

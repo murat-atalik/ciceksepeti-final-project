@@ -1,4 +1,4 @@
-import './Account.scss';
+import './account.scss';
 
 import React from 'react';
 

@@ -1,0 +1,23 @@
+$background: #fbfbfb;
+$white: #ffffff;
+$alert-color: #ffe5e5;
+$unnamed-color-46af32: #46af32;
+$input-border: #4b9ce2;
+$input-inner: #f0f8ff;
+$warning-border: #f77474;
+$grey-300: #3e3e3e;
+$grey-200: #525252;
+$grey-100: #b1b1b1;
+$white-400: #eaeaea;
+$white-300: #f4f4f4;
+$white-200: #f2f2f2;
+$white-100: #ffffff;
+
+$vw-viewport: 1920px;
+@function get-vw($px-vw) {
+  @return ($px-vw * 100vw) / $vw-viewport;
+}
+$vh-viewport: 1080px;
+@function get-vh($px-vh) {
+  @return ($px-vh * 100vh) / $vh-viewport;
+}
