@@ -47,12 +47,11 @@
 .email-input {
   width: get-vw(389px);
   min-width: 242px;
-
   height: get-vh(45px);
   font: normal normal bold 18px/24px Nunito;
 }
-.password-input {
-  margin-top: get-vh(40px);
+.email-input {
+  margin-bottom: get-vh(15px);
 }
 .custom-btn {
   margin-top: get-vh(30px);
@@ -63,7 +62,7 @@
 }
 .form-title {
   color: $grey-200;
-  margin-bottom: get-vh(75px);
+  margin-bottom: get-vh(50px);
   margin-top: get-vh(70px);
   width: get-vw(389px);
   min-width: 242px;
@@ -113,4 +112,23 @@
   width: get-vw(224px);
   height: get-vh(73px);
   min-width: 140px;
+}
+.input-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .form-label {
+    font: normal normal normal 15px/20px Nunito;
+    color: $grey-200;
+    margin-bottom: get-vh(5px);
+    margin-left: 1px;
+  }
+
+  p:first-child {
+    width: get-vw(389px);
+    min-width: 242px;
+  }
+  .form-error {
+    color: $warning-border;
+  }
 }

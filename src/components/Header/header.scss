@@ -1,0 +1,42 @@
+@import '../../style/variables';
+.header {
+  height: get-vh(80px);
+  width: 100%;
+  color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .header-logo-redirect {
+    height: 42.04px;
+    width: 128.94px;
+    margin-left: get-vw(220px);
+
+    .header-logo {
+      height: 42.04px;
+      width: 128.94px;
+    }
+  }
+  .header-buttons {
+    .account-btn {
+      height: get-vh(40px);
+      width: 116px;
+      margin-left: get-vw(10.43px);
+      border-radius: 8px;
+      padding: 8px;
+    }
+    .header-add-btn {
+      border-radius: 8px;
+      height: get-vh(40px);
+      width: 125px;
+      padding: 8px;
+    }
+    margin-right: get-vw(220px);
+  }
+  .header-add-img {
+    margin-right: 6px;
+  }
+  .header-account-img {
+    margin-right: 4.5px;
+  }
+}

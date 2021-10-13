@@ -1,9 +1,8 @@
-import { fetchAllBrandsInfo } from 'actions/brand/getAllBrands';
+/* import { fetchAllBrandsInfo } from 'actions/brand/getAllBrands';
 import { fetchAllCategoriesInfo } from 'actions/category/getAllCategories';
 import { fetchAllColorsInfo } from 'actions/color/allColors';
-import { fetchAllStatusesInfo } from 'actions/status/allStatuses';
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { fetchAllStatusesInfo } from 'actions/status/allStatuses'; */
+import React from 'react';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
 
 import RouterController from './Routes/RouteController';
@@ -14,15 +13,18 @@ import {
 } from './Routes/routes';
 
 function App() {
-  const dispatch = useDispatch();
+  /*   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchAllBrandsInfo());
     dispatch(fetchAllCategoriesInfo());
     dispatch(fetchAllColorsInfo());
     dispatch(fetchAllStatusesInfo());
-  }, [dispatch]);
-  const loggedIn = false;
-  // eslint-disable-next-line no-debugger
+  }, [dispatch]); */
+  let loggedIn = false;
+  if (localStorage.getItem('user')) {
+    loggedIn = true;
+  }
+  console.log(localStorage.getItem('user'));
   return (
     <Router>
       <Switch>
