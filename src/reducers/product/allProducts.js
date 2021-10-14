@@ -1,4 +1,4 @@
-import COLOR_TYPES from '../../action-types/color';
+import PRODUCT_TYPES from '../../action-types/product';
 
 const initialState = {
   postData: [],
@@ -6,21 +6,21 @@ const initialState = {
   isError: '',
 };
 
-const allColors = (state = initialState, action) => {
+const allProducts = (state = initialState, action) => {
   switch (action.type) {
-    case COLOR_TYPES.FETCH_ALLCOLORS_START:
+    case PRODUCT_TYPES.FETCH_ALLPRODUCTS_START:
       return { ...state, isFetching: true, postData: [], isError: '' };
-    case COLOR_TYPES.FETCH_ALLCOLORS_SUCCESS:
+    case PRODUCT_TYPES.FETCH_ALLPRODUCTS_SUCCESS:
       return {
         ...state,
         postData: action.payload,
         isFetching: false,
         isError: '',
       };
-    case COLOR_TYPES.FETCH_ALLCOLORS_ERROR:
+    case PRODUCT_TYPES.FETCH_ALLPRODUCTS_ERROR:
       return { ...state, isError: action.payload, isFetching: false };
     default:
       return state;
   }
 };
-export default allColors;
+export default allProducts;

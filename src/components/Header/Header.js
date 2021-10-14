@@ -29,7 +29,7 @@ function Header() {
             <img src={add} alt="Ürün Ekle" className="header-add-img" />
             Ürün Ekle
           </Button>
-          {localStorage.getItem('user') ? (
+          {localStorage.getItem('email') ? (
             <Button
               className="account-btn"
               theme="secondary"

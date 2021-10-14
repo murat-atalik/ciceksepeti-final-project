@@ -1,0 +1,50 @@
+@import '../../style/variables';
+
+.card-container {
+  width: get-vw(280px);
+  height: auto;
+  background-color: $white;
+  min-width: 173px;
+  border-radius: 8px;
+  padding: get-vw(8px);
+  margin-bottom: 10px;
+  &:hover {
+    cursor: pointer;
+  }
+  .card-img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: get-vw(260px);
+      height: 116%;
+      min-width: 161px;
+      min-height: 116%;
+    }
+  }
+  .card-product-info {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-transform: capitalize;
+    .card-brand {
+      color: $input-border;
+      font: normal normal bold 15px/22px Nunito;
+    }
+    .card-color {
+      color: $grey-300;
+      font: normal normal bold 13px/22px Nunito;
+      span {
+        font: normal normal normal 13px/22px Nunito;
+      }
+    }
+  }
+
+  .card-price {
+    margin-top: 26px;
+    color: $grey-300;
+    text-align: left;
+    font: normal normal bold 18px/22px Nunito;
+  }
+}

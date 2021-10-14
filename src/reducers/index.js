@@ -5,6 +5,7 @@ import SignupReducer from './authorization/signup';
 import AllBrandsReducer from './brand/allBrands';
 import AllCategoriesReducer from './category/allCategories';
 import AllColorsReducer from './color/allColors';
+import AllProductsReducer from './product/allProducts';
 import AllStatusesReducer from './status/allStatuses';
 
 export default combineReducers({
@@ -14,4 +15,5 @@ export default combineReducers({
   allBrands: AllBrandsReducer,
   allColor: AllColorsReducer,
   allStatuses: AllStatusesReducer,
+  allProducts: AllProductsReducer,
 });

@@ -1,9 +1,9 @@
-/* import { fetchAllBrandsInfo } from 'actions/brand/getAllBrands';
-import { fetchAllCategoriesInfo } from 'actions/category/getAllCategories';
-import { fetchAllColorsInfo } from 'actions/color/allColors';
-import { fetchAllStatusesInfo } from 'actions/status/allStatuses'; */
+import 'react-toastify/dist/ReactToastify.css';
+import './style/index.scss';
+
 import React from 'react';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 import RouterController from './Routes/RouteController';
 import {
@@ -13,18 +13,10 @@ import {
 } from './Routes/routes';
 
 function App() {
-  /*   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchAllBrandsInfo());
-    dispatch(fetchAllCategoriesInfo());
-    dispatch(fetchAllColorsInfo());
-    dispatch(fetchAllStatusesInfo());
-  }, [dispatch]); */
   let loggedIn = false;
-  if (localStorage.getItem('user')) {
+  if (localStorage.getItem('email')) {
     loggedIn = true;
   }
-  console.log(localStorage.getItem('user'));
   return (
     <Router>
       <Switch>
@@ -59,6 +51,18 @@ function App() {
           />
         ))}
       </Switch>
+      <ToastContainer
+        className="react-toastfiy"
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </Router>
   );
 }

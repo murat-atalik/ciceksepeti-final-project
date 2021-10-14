@@ -10,7 +10,6 @@ export const protectedRoutes = [
   { path: '/add-product', component: AddProduct, exact: false },
 ];
 export const publicRoutes = [
-  { path: '/products', component: Products, exact: false },
   { path: '/product/:id', component: Product, exact: false },
   { path: '/', component: Products, exact: true },
 ];

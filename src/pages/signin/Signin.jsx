@@ -1,5 +1,6 @@
 import './signin.scss';
 
+import { fetchSigninInfo } from 'actions/authorization/signin';
 import FormComponent from 'components/FormComponents/FormComponent';
 import React from 'react';
 
@@ -12,7 +13,7 @@ function Signin() {
         <img src={model} alt="model" />
       </div>
       <div className="form-container">
-        <FormComponent type="signin" />
+        <FormComponent type="signin" fetch={fetchSigninInfo} />
       </div>
     </div>
   );

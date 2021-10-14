@@ -2,58 +2,92 @@
 import './products.scss';
 
 import { fetchAllCategoriesInfo } from 'actions/category/getAllCategories';
+import { fetchAllProductsInfo } from 'actions/product/getAllProducts';
+import Card from 'components/Card/Card';
 import Header from 'components/Header/Header';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import banner from '../../assests/Banner1.png';
 
 function Products() {
-  const location = useLocation();
+  const history = useHistory();
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.allCategories);
-  console.log('location :>> ', location.pathname);
+  const products = useSelector((state) => state.allProducts);
+  const params = new URLSearchParams(window.location.search);
+  const categoryQuery = params.get('category');
+  const [filteredData, setFilteredData] = useState([]);
   useEffect(() => {
     if (categories.postData.length === 0 && !categories.isFetching) {
       dispatch(fetchAllCategoriesInfo());
     }
-  }, [categories, dispatch]);
+    if (products.postData.length === 0 && !products.isFetching) {
+      dispatch(fetchAllProductsInfo());
+      console.log('products :>> ', products);
+    }
+  }, [products, categories, dispatch]);
+
+  useEffect(() => {
+    if (categoryQuery) {
+      setFilteredData(
+        products.postData.filter(
+          (item) => item.category.title === categoryQuery
+        )
+      );
+      console.log('categoryQuery 1:>> ', categoryQuery);
+    } else {
+      setFilteredData(products.postData);
+      console.log('categoryQuery 2:>> ', categoryQuery);
+    }
+  }, [categoryQuery, products]);
+
+  const goProduct = (value) => {
+    history.push(`/product/${value}`);
+  };
+
   return (
     <>
       <Header />
       <div className="body">
         <div className="products-body">
           <img className="banner-img" src={banner} alt="banner" />
-          <div className="wrapper">
-            <div className="categori-links">
+          <div className="wrapper-categories">
+            <div className="category-links">
               <Link
                 to="/"
                 className={
-                  location.pathname === '/' ||
-                  location.pathname === '/products' ||
-                  location.pathname === '/products/'
-                    ? 'categori-link-active'
-                    : 'categori-link-redirect'
+                  !categoryQuery
+                    ? 'category-link-active'
+                    : 'category-link-redirect'
                 }
               >
                 Hepsi
               </Link>
-              {categories.postData.map((category) => (
-                <Link
-                  to={`/products/${category.title.trim()}`}
-                  key={category.id}
-                  className={
-                    `/products/${category.title.trim()}` ===
-                    location.pathname.trim()
-                      ? 'categori-link-active'
-                      : 'categori-link-redirect'
-                  }
-                >
-                  <span>{category.title.trim()}</span>
-                </Link>
-              ))}
+
+              {categories.postData.length > 0 &&
+                categories.postData.map((category) => (
+                  <Link
+                    to={`/?category=${category.title.trim()}`}
+                    key={category.id}
+                    className={
+                      category.title.trim() === categoryQuery
+                        ? 'category-link-active'
+                        : 'category-link-redirect'
+                    }
+                  >
+                    {category.title.trim()}
+                  </Link>
+                ))}
             </div>
+          </div>
+
+          <div className="product-grid-container">
+            {filteredData.length > 0 &&
+              filteredData.map((product) => (
+                <Card key={product.id} product={product} callback={goProduct} />
+              ))}
           </div>
         </div>
       </div>

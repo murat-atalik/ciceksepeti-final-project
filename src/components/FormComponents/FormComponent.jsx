@@ -1,6 +1,7 @@
 import useValidation from 'hooks/useValidation';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import ProjectLogo from '../../assests/Group6607.svg';
@@ -8,9 +9,11 @@ import validate from '../../helpers/validationHelper';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
 
-function FormComponent({ type }) {
+function FormComponent({ type, fetch }) {
+  const dispatch = useDispatch();
   const log = (value) => {
-    console.log('object :>> ', value);
+    dispatch(fetch(value));
+    localStorage.setItem('email', value.email);
   };
   const { handleSubmit, handleChange, values, errors } = useValidation(
     log,
@@ -20,7 +23,7 @@ function FormComponent({ type }) {
   return (
     <>
       <form className="form" onSubmit={handleSubmit}>
-        {type === 'signin' ? (
+        {type === 'signup' ? (
           <div className="form-title">
             <h2>Üye Ol</h2>
             <div>Fırsatlardan yararlanmak için üye ol!</div>
@@ -58,9 +61,9 @@ function FormComponent({ type }) {
           {errors.password && <p className="form-error">{errors.password}</p>}
         </div>
         <Button type="submit" theme="primary" className="custom-btn">
-          {type === 'signin' ? 'Üye Ol' : 'Giriş Yap'}
+          {type === 'signup' ? 'Üye Ol' : 'Giriş Yap'}
         </Button>
-        {type !== 'signin' ? (
+        {type === 'signup' ? (
           <div className="form-redirect">
             <p>Hesabın var mı?</p>
             <Link to="/signin" className="link-to">
