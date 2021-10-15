@@ -1,20 +1,19 @@
 import CATEGORY_TYPES from '../../action-types/category';
 
 const initialState = {
-  postData: [],
+  allCategories: [],
   isFetching: false,
   isError: '',
 };
 
-const allCategories = (state = initialState, action) => {
-  console.log(action.type);
+const category = (state = initialState, action) => {
   switch (action.type) {
     case CATEGORY_TYPES.FETCH_ALLCATEGORIES_START:
-      return { ...state, isFetching: true, postData: [], isError: '' };
+      return { ...state, isFetching: true, allCategories: [], isError: '' };
     case CATEGORY_TYPES.FETCH_ALLCATEGORIES_SUCCESS:
       return {
         ...state,
-        postData: action.payload,
+        allCategories: action.payload,
         isFetching: false,
         isError: '',
       };
@@ -24,4 +23,4 @@ const allCategories = (state = initialState, action) => {
       return state;
   }
 };
-export default allCategories;
+export default category;

@@ -18,5 +18,5 @@ export const fetchAllBrandsInfo = () => async (dispatch) => {
   return request
     .get('/detail/brand/all')
     .then((response) => dispatch(fetchAllBrandsSuccess(response.data)))
-    .catch(() => dispatch(fetchAllBrandsError()));
+    .catch((err) => dispatch(fetchAllBrandsError(err)));
 };

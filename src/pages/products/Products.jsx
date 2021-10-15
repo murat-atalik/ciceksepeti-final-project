@@ -20,26 +20,23 @@ function Products() {
   const categoryQuery = params.get('category');
   const [filteredData, setFilteredData] = useState([]);
   useEffect(() => {
-    if (categories.postData.length === 0 && !categories.isFetching) {
+    if (categories.allCategories.length === 0 && !categories.isFetching) {
       dispatch(fetchAllCategoriesInfo());
     }
-    if (products.postData.length === 0 && !products.isFetching) {
+    if (products.products.length === 0 && !products.isFetching) {
       dispatch(fetchAllProductsInfo());
-      console.log('products :>> ', products);
     }
   }, [products, categories, dispatch]);
 
   useEffect(() => {
     if (categoryQuery) {
       setFilteredData(
-        products.postData.filter(
+        products.products.filter(
           (item) => item.category.title === categoryQuery
         )
       );
-      console.log('categoryQuery 1:>> ', categoryQuery);
     } else {
-      setFilteredData(products.postData);
-      console.log('categoryQuery 2:>> ', categoryQuery);
+      setFilteredData(products.products);
     }
   }, [categoryQuery, products]);
 
@@ -66,8 +63,8 @@ function Products() {
                 Hepsi
               </Link>
 
-              {categories.postData.length > 0 &&
-                categories.postData.map((category) => (
+              {categories.allCategories.length > 0 &&
+                categories.allCategories.map((category) => (
                   <Link
                     to={`/?category=${category.title.trim()}`}
                     key={category.id}

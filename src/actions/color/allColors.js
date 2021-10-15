@@ -18,5 +18,5 @@ export const fetchAllColorsInfo = () => async (dispatch) => {
   return request
     .get('/detail/color/all')
     .then((response) => dispatch(fetchAllColorsSuccess(response.data)))
-    .catch(() => dispatch(fetchAllColorsError()));
+    .catch((err) => dispatch(fetchAllColorsError(err)));
 };

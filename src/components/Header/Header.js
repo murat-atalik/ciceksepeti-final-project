@@ -21,14 +21,16 @@ function Header() {
           <img className="header-logo" src={logo} alt="logo" />
         </Link>
         <div className="header-buttons">
-          <Button
-            className="header-add-btn"
-            theme="secondary"
-            onClick={goAddProduct}
-          >
-            <img src={add} alt="Ürün Ekle" className="header-add-img" />
-            Ürün Ekle
-          </Button>
+          {localStorage.getItem('email') && (
+            <Button
+              className="header-add-btn"
+              theme="secondary"
+              onClick={goAddProduct}
+            >
+              <img src={add} alt="Ürün Ekle" className="header-add-img" />
+              Ürün Ekle
+            </Button>
+          )}
           {localStorage.getItem('email') ? (
             <Button
               className="account-btn"

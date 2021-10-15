@@ -1,24 +1,32 @@
 import useValidation from 'hooks/useValidation';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import ProjectLogo from '../../assests/Group6607.svg';
 import validate from '../../helpers/validationHelper';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
 
-function FormComponent({ type, fetch }) {
+function FormComponent({ type, fetch, isSignedIn }) {
   const dispatch = useDispatch();
+  const history = useHistory();
   const log = (value) => {
-    dispatch(fetch(value));
-    localStorage.setItem('email', value.email);
+    if (!isSignedIn) {
+      dispatch(fetch(value, history));
+    }
   };
   const { handleSubmit, handleChange, values, errors } = useValidation(
     log,
     validate
   );
+
+  useEffect(() => {
+    if (isSignedIn) {
+      history.push('/');
+    }
+  }, [history, isSignedIn]);
 
   return (
     <>

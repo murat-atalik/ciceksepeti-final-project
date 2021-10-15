@@ -54,7 +54,7 @@ function App() {
       <ToastContainer
         className="react-toastfiy"
         position="top-right"
-        autoClose={5000}
+        autoClose={3000}
         hideProgressBar
         newestOnTop
         closeOnClick

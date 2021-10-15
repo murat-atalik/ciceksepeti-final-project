@@ -18,5 +18,5 @@ export const fetchAllCategoriesInfo = () => async (dispatch) => {
   return request
     .get('/detail/category/all')
     .then((response) => dispatch(fetchAllCategoriesSuccess(response.data)))
-    .catch(() => dispatch(fetchAllCategoriesError()));
+    .catch((err) => dispatch(fetchAllCategoriesError(err)));
 };

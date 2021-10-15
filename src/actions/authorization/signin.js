@@ -17,7 +17,6 @@ export const fetchSigninError = (err) => ({
 
 export const fetchSigninInfo = (user) => async (dispatch) => {
   dispatch(fetchSigninStart());
-  console.log(`user`, user);
   return request
     .post('/authorization/signin', user)
     .then((response) => {
@@ -34,9 +33,10 @@ export const fetchSigninInfo = (user) => async (dispatch) => {
         closeButton: false,
       });
       localStorage.setItem('access-token', response.data.access_token);
+      localStorage.setItem('email', user.email);
     })
-    .catch(() => {
-      dispatch(fetchSigninError());
+    .catch((err) => {
+      dispatch(fetchSigninError(err));
       toast.error('Emailiniz veya şifreniz hatalı.', {
         position: 'top-right',
         autoClose: 5000,

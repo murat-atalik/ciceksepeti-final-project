@@ -33,9 +33,10 @@ export const fetchSignupInfo = (user) => async (dispatch) => {
         closeButton: false,
       });
       localStorage.setItem('access-token', response.data.access_token);
+      localStorage.setItem('email', user.email);
     })
-    .catch(() => {
-      dispatch(fetchSignupError());
+    .catch((err) => {
+      dispatch(fetchSignupError(err));
       toast.error('Email adresi kullanımda.', {
         position: 'top-right',
         autoClose: 5000,

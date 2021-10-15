@@ -4,6 +4,7 @@ const initialState = {
   postData: {},
   isFetching: false,
   isError: '',
+  isSignedIn: false,
 };
 
 const signup = (state = initialState, action) => {
@@ -16,6 +17,7 @@ const signup = (state = initialState, action) => {
         postData: action.payload,
         isFetching: false,
         isError: '',
+        isSignedIn: true,
       };
     case AUTH_TYPES.FETCH_SIGNUP_ERROR:
       return { ...state, isError: action.payload, isFetching: false };

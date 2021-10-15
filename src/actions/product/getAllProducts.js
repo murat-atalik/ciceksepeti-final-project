@@ -18,5 +18,5 @@ export const fetchAllProductsInfo = () => async (dispatch) => {
   return request
     .get('/product/all')
     .then((response) => dispatch(fetchAllProductsSuccess(response.data)))
-    .catch(() => dispatch(fetchAllProductsError()));
+    .catch((err) => dispatch(fetchAllProductsError(err)));
 };

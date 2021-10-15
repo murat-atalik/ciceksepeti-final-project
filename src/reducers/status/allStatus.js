@@ -1,26 +1,26 @@
 import STATUS_TYPES from '../../action-types/status';
 
 const initialState = {
-  postData: [],
+  allStatus: [],
   isFetching: false,
   isError: '',
 };
 
-const allStatuses = (state = initialState, action) => {
+const allStatus = (state = initialState, action) => {
   switch (action.type) {
-    case STATUS_TYPES.FETCH_ALLSTATUSES_START:
+    case STATUS_TYPES.FETCH_ALLSTATUS_START:
       return { ...state, isFetching: true, postData: [], isError: '' };
-    case STATUS_TYPES.FETCH_ALLSTATUSES_SUCCESS:
+    case STATUS_TYPES.FETCH_ALLSTATUS_SUCCESS:
       return {
         ...state,
         postData: action.payload,
         isFetching: false,
         isError: '',
       };
-    case STATUS_TYPES.FETCH_ALLSTATUSES_ERROR:
+    case STATUS_TYPES.FETCH_ALLSTATUS_ERROR:
       return { ...state, isError: action.payload, isFetching: false };
     default:
       return state;
   }
 };
-export default allStatuses;
+export default allStatus;

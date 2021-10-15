@@ -1,7 +1,7 @@
 import BRAND_TYPES from '../../action-types/brand';
 
 const initialState = {
-  postData: [],
+  allBrands: [],
   isFetching: false,
   isError: '',
 };
@@ -9,11 +9,11 @@ const initialState = {
 const allBrands = (state = initialState, action) => {
   switch (action.type) {
     case BRAND_TYPES.FETCH_ALLBRANDS_START:
-      return { ...state, isFetching: true, postData: {}, isError: '' };
+      return { ...state, isFetching: true, allBrands: {}, isError: '' };
     case BRAND_TYPES.FETCH_ALLBRANDS_SUCCESS:
       return {
         ...state,
-        postData: action.payload,
+        allBrands: action.payload,
         isFetching: false,
         isError: '',
       };
