@@ -7,7 +7,6 @@
   padding-top: 20px;
   .product-detail-container {
     display: flex;
-
     margin: 0 get-vw(220px);
     background-color: $white;
     padding: 8px;
@@ -23,7 +22,7 @@
       justify-content: center;
       align-content: center;
       padding: 8px;
-      background-color: $white-200;
+      margin-right: get-vw(60px);
       img {
         border-radius: 8px;
         width: 100%;
@@ -33,15 +32,100 @@
     }
     .product-detail-info {
       padding: 8px;
-      max-width: get-vw(700px);
+      width: get-vw(700px);
       height: 100%;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      align-items: flex-start;
       align-content: center;
       padding: 8px;
-      background-color: $white-200;
+      &-title {
+        color: $grey-400;
+        font: normal normal normal 34px Nunito;
+        margin-bottom: get-vh(25px);
+      }
+      .info-wrapper {
+        .color-info,
+        .brand-info {
+          margin-bottom: get-vh(20px);
+        }
+        .color-info,
+        .brand-info,
+        .status-info {
+          display: flex;
+          p {
+            width: get-vw(200px);
+            font: normal normal bold 18px Nunito;
+            text-transform: capitalize;
+          }
+          span {
+            margin-left: 20px;
+            text-transform: capitalize;
+            font: normal normal normal 18px Nunito;
+          }
+        }
+        .product-price {
+          margin-top: get-vh(30px);
+          font: normal normal bold 25px Nunito;
+          color: $grey-400;
+          p {
+            display: inline-block;
+          }
+        }
+        .product-offer-container {
+          margin-top: get-vh(2px);
+          border-radius: 8px;
+          width: 230px;
+          height: 36px;
+          display: flex;
+          align-items: center;
+          padding: 8px;
+          background-color: $white-200;
+          p:first-child {
+            color: $grey-100;
+            font: normal normal normal 18px Nunito;
+          }
+          p:last-child {
+            display: inline-block;
+            color: $grey-200;
+            font: normal normal bold 18px Nunito;
+            &::before {
+              content: '';
+              margin-left: 5px;
+            }
+          }
+        }
+        .product-btn-contaier {
+          margin-top: 30px;
+          button {
+            width: 235px;
+            height: 45px;
+            padding: 8px;
+            border-radius: 8px;
+            margin-right: get-vw(10px);
+            font: normal normal bold 20px Nunito;
+          }
+        }
+        .product-description {
+          margin-top: 40px;
+          width: get-vw(480px);
+          font: normal normal bold 20px Nunito;
+          color: $grey-400;
+
+          p:last-child {
+            color: $grey-200;
+            margin-top: 10px;
+            height: 200px;
+            font: normal normal normal 18px Nunito;
+            overflow: auto;
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+            &::-webkit-scrollbar {
+              display: none;
+            }
+          }
+        }
+      }
     }
   }
 }
