@@ -1,22 +1,15 @@
 import { useEffect, useState } from 'react';
 
-const useValidation = (callback, validate) => {
-  const [values, setValues] = useState({ email: '', password: '' });
+const useValidation = (callback, validate, values) => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setValues({
-      ...values,
-      [name]: value,
-    });
+  const handleChange = () => {
     setIsSubmitting(false);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors(validate(values));
-
     setIsSubmitting(true);
   };
   useEffect(() => {

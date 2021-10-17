@@ -1,0 +1,160 @@
+@import '../../style/variables';
+
+.offer-modal-wrapper {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  background-color: rgba(75, 156, 226, 0.7);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &-inner {
+    width: 480px;
+    height: 460px;
+    background-color: $white-100;
+    padding: 8px;
+    border-radius: 8px;
+    margin-bottom: get-vh(64px);
+    text-align: center;
+    &-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 440px;
+      height: 34px;
+      margin: 12px auto 17px auto;
+
+      h2 {
+        color: $grey-200;
+        font: normal normal bold 25px/23px Nunito;
+        margin-top: 12px;
+      }
+      .close-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        & > img {
+          width: 18px;
+          height: 18px;
+        }
+      }
+    }
+    .offer-modal-info {
+      width: 440px;
+      height: 60px;
+      background-color: $input-inner;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      border-radius: 8px;
+      & > img {
+        margin: 5px;
+        width: 50px;
+        height: 50px;
+        border-radius: 8px;
+        float: left;
+      }
+    }
+
+    &-offer {
+      margin: 20px auto 0 auto;
+      width: 440px;
+      > div {
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 8px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        cursor: pointer;
+
+        > span {
+          color: $grey-200;
+          cursor: pointer;
+          font: normal normal normal 15px/20px Nunito;
+          &::before {
+            content: '';
+            padding-left: 5px;
+          }
+        }
+
+        img {
+          cursor: pointer;
+          width: 20px;
+          height: 20px;
+        }
+      }
+      .checked-active {
+        color: $input-border;
+
+        background-color: $input-inner;
+        border: 1px solid $input-border;
+      }
+      .checked-default {
+        background-color: $white-100;
+        border: 1px solid $link-grey;
+      }
+    }
+  }
+
+  .offer-input {
+    position: relative;
+    color: $grey-500;
+    input {
+      width: 440px;
+      height: 45px;
+      padding-right: 40px;
+    }
+    .offer-input-price {
+      pointer-events: none;
+      font: normal normal normal 16px/22px Nunito;
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      right: 30px;
+      top: 12px;
+      bottom: 11px;
+    }
+  }
+  &-buttons {
+    button {
+      margin-top: 20px;
+      font: normal normal bold 18px/24px Nunito;
+      width: 315px;
+      height: 45px;
+      border-radius: 8px;
+      &:first-child {
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+.modal-details {
+  width: 380px;
+  margin: 0 !important;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  > p {
+    font: normal normal normal 13px/16px Nunito;
+    text-align: left;
+    width: 140px;
+    height: 50px;
+    color: $grey-400;
+  }
+  > .product-price {
+    font: normal normal bold 18px/32px Nunito;
+    color: $grey-200;
+    > p {
+      display: inline-block;
+    }
+  }
+}

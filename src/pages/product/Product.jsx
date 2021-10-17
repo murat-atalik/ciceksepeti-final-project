@@ -4,6 +4,8 @@ import { fetchGivenOffersInfo } from 'actions/account/givenOffers';
 import { fetchGetProductInfo } from 'actions/product/getProduct';
 import Button from 'components/Button/Button';
 import Header from 'components/Header/Header';
+import ConfirmationModal from 'components/Modal/ConfirmationModal';
+import OfferModal from 'components/Modal/OfferModal';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -14,7 +16,18 @@ function Product() {
   const getProduct = useSelector((state) => state.getProduct);
   const givenOffers = useSelector((state) => state.givenOffers);
   const [offer, setOffer] = useState({});
-
+  const [buyModal, setBuyModal] = useState(false);
+  const [withdrawOffer, setWithdrawOffer] = useState(false);
+  const [offerModalVisibility, setOfferModalVisibilty] = useState(false);
+  const toggleBuyModal = () => {
+    setBuyModal((prev) => !prev);
+  };
+  const toggleWithDrawOffer = () => {
+    setWithdrawOffer((prev) => !prev);
+  };
+  const togggleOfferModal = () => {
+    setOfferModalVisibilty((prev) => !prev);
+  };
   useEffect(() => {
     if (givenOffers.data.length > 0) {
       setOffer(givenOffers.data.filter((item) => item.product.id === id)[0]);
@@ -23,6 +36,7 @@ function Product() {
   useEffect(() => {
     dispatch(fetchGetProductInfo(id));
   }, [dispatch, id]);
+
   useEffect(() => {
     if (
       !givenOffers.isFetching &&
@@ -32,7 +46,6 @@ function Product() {
       dispatch(fetchGivenOffersInfo());
     }
   }, [dispatch, getProduct, givenOffers, id]);
-  console.log('product :>> ', localStorage.getItem('access-token') === null);
 
   return (
     <>
@@ -87,17 +100,23 @@ function Product() {
                 )}
                 <div className="product-btn-contaier">
                   {!getProduct.product.isSold && (
-                    <Button theme="primary">Satın Al</Button>
+                    <Button theme="primary" onClick={toggleBuyModal}>
+                      Satın Al
+                    </Button>
                   )}
                   {!getProduct.product.isSold &&
                     getProduct.product.isOfferable &&
-                    offer === 'undefined' && (
-                      <Button theme="secondary">Teklif Ver</Button>
+                    !offer && (
+                      <Button theme="secondary" onClick={togggleOfferModal}>
+                        Teklif Ver
+                      </Button>
                     )}
                   {!getProduct.product.isSold &&
                     getProduct.product.isOfferable &&
                     offer && (
-                      <Button theme="secondary">Teklifi Geri Çek</Button>
+                      <Button theme="secondary" onClick={toggleWithDrawOffer}>
+                        Teklifi Geri Çek
+                      </Button>
                     )}
                   {getProduct.product.isSold && (
                     <Button theme="disabled" disabled>
@@ -115,6 +134,31 @@ function Product() {
           </div>
         )}
       </div>
+
+      {buyModal && (
+        <ConfirmationModal
+          title="Satın Al"
+          body="Satın Almak istiyor musunuz?"
+          toggleModdal={toggleBuyModal}
+          primaryButton="Satın Al"
+          secondaryButton="Vazgeç"
+        />
+      )}
+      {withdrawOffer && (
+        <ConfirmationModal
+          title="Teklifi Geri Çek"
+          body="Teklifi Geri Çekmek istiyor musunuz?"
+          toggleModdal={toggleWithDrawOffer}
+          primaryButton="Teklifi Geri Çek"
+          secondaryButton="Vazgeç"
+        />
+      )}
+      {offerModalVisibility && (
+        <OfferModal
+          toggleModdal={togggleOfferModal}
+          product={getProduct.product}
+        />
+      )}
     </>
   );
 }

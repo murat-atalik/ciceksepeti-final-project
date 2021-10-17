@@ -1,0 +1,47 @@
+@import '../../style/variables';
+
+.modal-wrapper {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  background-color: rgba(75, 156, 226, 0.7);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &-inner {
+    width: 355px;
+    height: 170px;
+    background-color: $white-100;
+    padding: 8px;
+    border-radius: 8px;
+    margin-bottom: get-vh(150px);
+    text-align: center;
+    h2 {
+      color: $grey-200;
+      font: normal normal bold 25px/23px Nunito;
+      margin-top: 12px;
+    }
+    p {
+      color: $grey-400;
+      font: normal normal normal 15px/23px Nunito;
+      margin-top: 12px;
+    }
+  }
+  &-buttons {
+    button {
+      margin-top: 20px;
+      font: normal normal bold 18px/24px Nunito;
+      width: 150px;
+      height: 45px;
+      border-radius: 8px;
+      &:first-child {
+        margin-right: 10px;
+      }
+    }
+  }
+}
