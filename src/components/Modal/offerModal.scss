@@ -106,10 +106,20 @@
   .offer-input {
     position: relative;
     color: $grey-500;
+    .error-span {
+      position: absolute;
+      top: 45px;
+      left: 20px;
+      color: $warning-border;
+      font: normal normal normal 12px Nunito;
+    }
     input {
       width: 440px;
       height: 45px;
       padding-right: 40px;
+    }
+    input[type='number'] {
+      -moz-appearance: textfield;
     }
     .offer-input-price {
       pointer-events: none;
@@ -120,6 +130,22 @@
       right: 30px;
       top: 12px;
       bottom: 11px;
+    }
+    .offer-input-price-error {
+      pointer-events: none;
+      font: normal normal normal 16px/22px Nunito;
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      right: 30px;
+      top: 12px;
+      bottom: 11px;
+      color: $warning-border;
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
     }
   }
   &-buttons {

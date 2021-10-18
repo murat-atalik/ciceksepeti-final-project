@@ -1,0 +1,66 @@
+@import '../../style/variables';
+
+.account-container {
+  width: 100%;
+  min-height: get-vh(1000px);
+  background-color: $white-200;
+  padding-top: 20px;
+}
+.account-email-container {
+  padding: 8px;
+  border-radius: 8px;
+  height: get-vh(70px);
+  width: get-vw(1480px);
+  background-color: $white-100;
+  margin: 0 auto 10px auto;
+
+  display: flex;
+  align-items: center;
+  > p {
+    margin-left: 10px;
+  }
+}
+.account-main-container {
+  width: get-vw(1480px);
+  height: get-vh(709px);
+  background-color: $white-100;
+  margin: 0 auto;
+  border-radius: 8px;
+  > hr {
+    margin: 0;
+    border: 1px solid $grey-100;
+  }
+}
+.account-detail-title {
+  padding: 20px 8px 10px 8px;
+  border-radius: 8px;
+  display: flex;
+  margin-left: 30px;
+  font: normal normal normal 15px/20px Nunito;
+  cursor: pointer;
+  color: $grey-100;
+  .active-title {
+    color: $input-border;
+    position: relative;
+    &::before {
+      position: absolute;
+      content: '';
+      bottom: -10px;
+      width: 100%;
+      height: 2px;
+      background: $input-border;
+    }
+  }
+  > h2 {
+    &:first-child {
+      margin-right: 40px;
+    }
+  }
+}
+.account-detail-container {
+  background: red;
+  img {
+    width: 78px;
+    height: 84px;
+  }
+}

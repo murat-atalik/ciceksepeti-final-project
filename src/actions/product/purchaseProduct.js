@@ -1,5 +1,8 @@
+import axios from 'axios';
+import { toast } from 'react-toastify';
+
 import PRODUCT_TYPES from '../../action-types/product';
-import request from '../../agent/request';
+import { fetchGetProductInfo } from './getProduct';
 
 export const fetchPurchaseProductStart = () => ({
   type: PRODUCT_TYPES.FETCH_PURCHASEPRODUCT_START,
@@ -12,14 +15,61 @@ export const fetchPurchaseProductError = (err) => ({
   payload: err,
 });
 
+const config = {
+  headers: {
+    Authorization: `Bearer ${localStorage.getItem('access-token')}`,
+  },
+};
+
 export const fetchPurchaseProductInfo = (id) => async (dispatch) => {
   dispatch(fetchPurchaseProductStart());
-  return request
-    .put(`/product/purchase/${id}`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('access-token')}`,
-      },
+  return axios
+    .put(
+      `https://bootcampapi.techcs.io/api/fe/v1/product/purchase/${id}`,
+      null,
+      config
+    )
+    .then(() => {
+      dispatch(fetchPurchaseProductSuccess());
+      toast.success('Satın Alındı', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'colored',
+        closeButton: false,
+      });
     })
-    .then(() => dispatch(fetchPurchaseProductSuccess()))
-    .catch((err) => dispatch(fetchPurchaseProductError(err)));
+    .catch((err) => {
+      dispatch(fetchPurchaseProductError(err));
+      if (err.response.status === 401) {
+        toast.error('Kullanıcı sisteme giriş yapmalı', {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'colored',
+          closeButton: false,
+        });
+      } else {
+        toast.error('Ürün bulunamadı', {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'colored',
+          closeButton: false,
+        });
+      }
+    })
+    .then(() => dispatch(fetchGetProductInfo(id)));
 };

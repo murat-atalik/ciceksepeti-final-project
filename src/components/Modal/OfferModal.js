@@ -2,38 +2,71 @@ import './offerModal.scss';
 
 import CustomButton from 'components/Button/CustomButton';
 import Input from 'components/Input/Input';
+import offerHelper from 'helpers/offerHelper';
+import useValidation from 'hooks/useValidation';
 import React, { useState } from 'react';
 
 import Close from '../../assests/Group6618.svg';
 import CheckBox from './CheckBox';
 
-function OfferModal({ callback, toggleModdal, product }) {
+function OfferModal({
+  callback,
+  toggleModdal,
+  product,
+  offerPrice,
+  setOfferPrice,
+}) {
   const [percent20, setPercent20] = useState(false);
   const [percent30, setPercent30] = useState(false);
   const [percent40, setPercent40] = useState(false);
-
+  const [inputValue, setInputValue] = useState(0);
+  const { handleSubmit, handleChange, errors } = useValidation(
+    callback,
+    offerHelper,
+    offerPrice
+  );
   const checked20 = () => {
     setPercent20(true);
     setPercent30(false);
     setPercent40(false);
+    setInputValue(0);
+    const price = (product.price * 20) / 100;
+    const fixedPrice = price.toFixed(2);
+    setOfferPrice((prev) => ({ ...prev, offeredPrice: Number(fixedPrice) }));
+    handleChange();
   };
   const checked30 = () => {
     setPercent30(true);
     setPercent20(false);
     setPercent40(false);
+    setInputValue(0);
+    const price = (product.price * 30) / 100;
+    const fixedPrice = price.toFixed(2);
+    setOfferPrice((prev) => ({ ...prev, offeredPrice: Number(fixedPrice) }));
+    handleChange();
   };
   const checked40 = () => {
     setPercent40(true);
     setPercent20(false);
     setPercent30(false);
+    setInputValue(0);
+    const price = (product.price * 40) / 100;
+    const fixedPrice = price.toFixed(2);
+    setOfferPrice((prev) => ({ ...prev, offeredPrice: Number(fixedPrice) }));
+    handleChange();
   };
-  const checkedNone = () => {
+
+  const changeValue = (e) => {
     setPercent40(false);
     setPercent20(false);
     setPercent30(false);
+    setOfferPrice({ offeredPrice: Number(e.target.value) });
+    setInputValue(Number(e.target.value));
+    handleChange();
   };
   return (
     <div>
+      {offerPrice.offeredPrice}
       <div className="offer-modal-wrapper">
         <div className="offer-modal-wrapper-inner">
           <div className="offer-modal-wrapper-inner-title">
@@ -85,14 +118,30 @@ function OfferModal({ callback, toggleModdal, product }) {
           </div>
           <div className="offer-input">
             <Input
-              theme="primary"
-              onClick={checkedNone}
+              type="number"
+              theme={errors.offeredPrice ? 'warning' : 'primary'}
+              value={inputValue > 0 ? inputValue : ''}
+              onClick={(e) => {
+                changeValue(e);
+              }}
+              onChange={(e) => {
+                changeValue(e);
+              }}
               placeholder="Teklif Belirle"
             />
-            <span className="offer-input-price">TL</span>
+            <span
+              className={
+                errors.offeredPrice
+                  ? 'offer-input-price-error'
+                  : 'offer-input-price'
+              }
+            >
+              TL
+            </span>
+            <span className="error-span">{errors.offeredPrice}</span>
           </div>
           <div className="offer-modal-wrapper-buttons">
-            <CustomButton theme="primary" onClick={callback}>
+            <CustomButton theme="primary" onClick={handleSubmit}>
               Onayla
             </CustomButton>
           </div>

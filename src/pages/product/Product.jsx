@@ -1,7 +1,10 @@
 import './product.scss';
 
+import { fetchCancelOfferInfo } from 'actions/account/cancelOffer';
 import { fetchGivenOffersInfo } from 'actions/account/givenOffers';
 import { fetchGetProductInfo } from 'actions/product/getProduct';
+import { fetchOfferProductInfo } from 'actions/product/offerProduct';
+import { fetchPurchaseProductInfo } from 'actions/product/purchaseProduct';
 import Button from 'components/Button/Button';
 import Header from 'components/Header/Header';
 import ConfirmationModal from 'components/Modal/ConfirmationModal';
@@ -19,6 +22,7 @@ function Product() {
   const [buyModal, setBuyModal] = useState(false);
   const [withdrawOffer, setWithdrawOffer] = useState(false);
   const [offerModalVisibility, setOfferModalVisibilty] = useState(false);
+  const [offerPrice, setOfferPrice] = useState({ offeredPrice: 0 });
   const toggleBuyModal = () => {
     setBuyModal((prev) => !prev);
   };
@@ -28,11 +32,23 @@ function Product() {
   const togggleOfferModal = () => {
     setOfferModalVisibilty((prev) => !prev);
   };
+  const giveOffer = () => {
+    dispatch(fetchOfferProductInfo(id, offerPrice));
+    setOfferModalVisibilty(false);
+  };
+  const buyOffer = () => {
+    dispatch(fetchPurchaseProductInfo(id));
+    setBuyModal(false);
+  };
+  const cancelOffer = () => {
+    dispatch(fetchCancelOfferInfo(offer.id));
+    setWithdrawOffer(false);
+  };
+
   useEffect(() => {
-    if (givenOffers.data.length > 0) {
-      setOffer(givenOffers.data.filter((item) => item.product.id === id)[0]);
-    }
-  }, [givenOffers, id]);
+    setOffer(givenOffers.data.filter((item) => item.product.id === id)[0]);
+  }, [givenOffers, givenOffers.isFetching, id]);
+
   useEffect(() => {
     dispatch(fetchGetProductInfo(id));
   }, [dispatch, id]);
@@ -84,20 +100,22 @@ function Product() {
                   </p>
                   <span> TL</span>
                 </div>
-                {!getProduct.product.isSold && offer && (
-                  <div className="product-offer-container">
-                    <p className="product-offer-label">Verilen Teklif:</p>
-                    <p className="product-offer-price">
-                      {offer?.offeredPrice
-                        ?.toLocaleString('tr-TR', {
-                          style: 'currency',
-                          currency: 'TRY',
-                        })
-                        .slice(1)}
-                      <span> TL</span>
-                    </p>
-                  </div>
-                )}
+                {!getProduct.product.isSold &&
+                  (offer?.status === 'offered' ||
+                    offer?.status === 'rejected') && (
+                    <div className="product-offer-container">
+                      <p className="product-offer-label">Verilen Teklif:</p>
+                      <p className="product-offer-price">
+                        {offer?.offeredPrice
+                          ?.toLocaleString('tr-TR', {
+                            style: 'currency',
+                            currency: 'TRY',
+                          })
+                          .slice(1)}
+                        <span> TL</span>
+                      </p>
+                    </div>
+                  )}
                 <div className="product-btn-contaier">
                   {!getProduct.product.isSold && (
                     <Button theme="primary" onClick={toggleBuyModal}>
@@ -106,14 +124,15 @@ function Product() {
                   )}
                   {!getProduct.product.isSold &&
                     getProduct.product.isOfferable &&
-                    !offer && (
+                    !offer?.status && (
                       <Button theme="secondary" onClick={togggleOfferModal}>
                         Teklif Ver
                       </Button>
                     )}
                   {!getProduct.product.isSold &&
                     getProduct.product.isOfferable &&
-                    offer && (
+                    (offer?.status === 'offered' ||
+                      offer?.status === 'rejected') && (
                       <Button theme="secondary" onClick={toggleWithDrawOffer}>
                         Teklifi Geri Çek
                       </Button>
@@ -142,6 +161,7 @@ function Product() {
           toggleModdal={toggleBuyModal}
           primaryButton="Satın Al"
           secondaryButton="Vazgeç"
+          callback={buyOffer}
         />
       )}
       {withdrawOffer && (
@@ -151,12 +171,16 @@ function Product() {
           toggleModdal={toggleWithDrawOffer}
           primaryButton="Teklifi Geri Çek"
           secondaryButton="Vazgeç"
+          callback={cancelOffer}
         />
       )}
       {offerModalVisibility && (
         <OfferModal
           toggleModdal={togggleOfferModal}
           product={getProduct.product}
+          offerPrice={offerPrice}
+          setOfferPrice={setOfferPrice}
+          callback={giveOffer}
         />
       )}
     </>

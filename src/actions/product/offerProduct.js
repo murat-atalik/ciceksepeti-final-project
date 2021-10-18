@@ -1,3 +1,6 @@
+import { fetchGivenOffersInfo } from 'actions/account/givenOffers';
+import { toast } from 'react-toastify';
+
 import PRODUCT_TYPES from '../../action-types/product';
 import request from '../../agent/request';
 
@@ -20,6 +23,47 @@ export const fetchOfferProductInfo = (id, value) => async (dispatch) => {
         Authorization: `Bearer ${localStorage.getItem('access-token')}`,
       },
     })
-    .then(() => dispatch(fetchOfferProductSuccess()))
-    .catch((err) => dispatch(fetchOfferProductError(err)));
+    .then(() => {
+      dispatch(fetchOfferProductSuccess());
+      toast.success('Teklif başarılı', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'colored',
+        closeButton: false,
+      });
+    })
+    .catch((err) => {
+      dispatch(fetchOfferProductError(err));
+      if (err.response.status === 401) {
+        toast.error('Kullanıcı sisteme giriş yapmalı', {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'colored',
+          closeButton: false,
+        });
+      } else {
+        toast.error('Ürün bulunamadı', {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'colored',
+          closeButton: false,
+        });
+      }
+    })
+    .finally(() => dispatch(fetchGivenOffersInfo()));
 };

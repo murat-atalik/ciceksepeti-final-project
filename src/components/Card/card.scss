@@ -1,6 +1,9 @@
 @import '../../style/variables';
 
 .card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: get-vw(280px);
   height: auto;
   background-color: $white;
@@ -15,11 +18,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
     img {
       width: get-vw(260px);
-      height: 116%;
-      min-width: 161px;
-      min-height: 116%;
+      height: 100%;
     }
   }
   .card-product-info {

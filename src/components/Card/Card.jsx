@@ -13,21 +13,23 @@ function Card({ product, callback }) {
         <div className="card-img-container">
           <img src={product.imageUrl} alt={product.brand.title} />
         </div>
-        <div className="card-product-info">
-          <p className="card-brand">{product.brand.title}</p>
-          <p className="card-color">
-            Renk: <span>{product.color.title}</span>
+        <div>
+          <div className="card-product-info">
+            <p className="card-brand">{product.brand.title}</p>
+            <p className="card-color">
+              Renk: <span>{product.color.title}</span>
+            </p>
+          </div>
+          <p className="card-price">
+            {product.price
+              .toLocaleString('tr-TR', {
+                style: 'currency',
+                currency: 'TRY',
+              })
+              .slice(1)}
+            <span> TL</span>
           </p>
         </div>
-        <p className="card-price">
-          {product.price
-            .toLocaleString('tr-TR', {
-              style: 'currency',
-              currency: 'TRY',
-            })
-            .slice(1)}
-          <span> TL</span>
-        </p>
       </div>
     </>
   );
