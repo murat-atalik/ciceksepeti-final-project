@@ -1,7 +1,8 @@
 import 'react-toastify/dist/ReactToastify.css';
 import './style/index.scss';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
@@ -13,10 +14,21 @@ import {
 } from './Routes/routes';
 
 function App() {
-  let loggedIn = false;
-  if (localStorage.getItem('email')) {
-    loggedIn = true;
-  }
+  const signin = useSelector((state) => state.signin);
+  const signup = useSelector((state) => state.signup);
+  const [loggedIn, setLoggedIn] = useState(
+    localStorage.getItem('isSignedin') === 'true'
+  );
+  useEffect(() => {
+    if (
+      localStorage.getItem('isSignedin') === 'true' ||
+      signin.isSignedIn ||
+      signup.isSignedIn
+    ) {
+      setLoggedIn(true);
+    }
+  }, [signin.isSignedIn, signup.isSignedIn]);
+
   return (
     <Router>
       <Switch>

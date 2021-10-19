@@ -1,3 +1,4 @@
+import { fetchGivenOffersInfo } from 'actions/account/givenOffers';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
@@ -15,14 +16,13 @@ export const fetchPurchaseProductError = (err) => ({
   payload: err,
 });
 
-const config = {
-  headers: {
-    Authorization: `Bearer ${localStorage.getItem('access-token')}`,
-  },
-};
-
-export const fetchPurchaseProductInfo = (id) => async (dispatch) => {
+export const fetchPurchaseProductInfo = (id, token) => async (dispatch) => {
   dispatch(fetchPurchaseProductStart());
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
   return axios
     .put(
       `https://bootcampapi.techcs.io/api/fe/v1/product/purchase/${id}`,
@@ -71,5 +71,8 @@ export const fetchPurchaseProductInfo = (id) => async (dispatch) => {
         });
       }
     })
-    .then(() => dispatch(fetchGetProductInfo(id)));
+    .then(() => {
+      dispatch(fetchGetProductInfo(id));
+      dispatch(fetchGivenOffersInfo());
+    });
 };

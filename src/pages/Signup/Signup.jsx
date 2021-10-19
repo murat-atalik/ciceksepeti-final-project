@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 import model from '../../assests/Group52.png';
 
 function Signup() {
-  const isSignedIn = useSelector((state) => state.signup.isSignedIn);
+  const signup = useSelector((state) => state.signup);
 
   return (
     <div className="signup">
@@ -19,7 +19,8 @@ function Signup() {
         <FormComponent
           type="signin"
           fetch={fetchSignupInfo}
-          isSignedIn={isSignedIn}
+          isSignedIn={signup.isSignedIn}
+          isFetching={signup.isFetching}
         />
       </div>
     </div>

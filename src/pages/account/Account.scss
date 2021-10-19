@@ -9,8 +9,9 @@
 .account-email-container {
   padding: 8px;
   border-radius: 8px;
-  height: get-vh(70px);
+  height: 70px;
   width: get-vw(1480px);
+  min-width: 355px;
   background-color: $white-100;
   margin: 0 auto 10px auto;
 
@@ -22,10 +23,13 @@
 }
 .account-main-container {
   width: get-vw(1480px);
-  height: get-vh(709px);
+  min-height: get-vh(709px);
+  min-width: 355px;
+
   background-color: $white-100;
   margin: 0 auto;
   border-radius: 8px;
+  padding-bottom: 40px;
   > hr {
     margin: 0;
     border: 1px solid $grey-100;
@@ -37,7 +41,6 @@
   display: flex;
   margin-left: 30px;
   font: normal normal normal 15px/20px Nunito;
-  cursor: pointer;
   color: $grey-100;
   .active-title {
     color: $input-border;
@@ -45,22 +48,86 @@
     &::before {
       position: absolute;
       content: '';
-      bottom: -10px;
+      bottom: -12px;
       width: 100%;
       height: 2px;
       background: $input-border;
     }
   }
   > h2 {
-    &:first-child {
-      margin-right: 40px;
-    }
+    margin-right: 40px;
+    cursor: pointer;
   }
 }
-.account-detail-container {
-  background: red;
+.account-detail-card {
+  border: 1px solid $white-200;
+  border-radius: 8px;
+  padding: 8px;
+  width: get-vw(1413px);
+  min-width: 335px;
+
+  min-height: 104px;
+  margin: 20px auto 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  &-wrapper {
+    display: flex;
+  }
   img {
     width: 78px;
     height: 84px;
+    cursor: pointer;
+  }
+  &-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    > p {
+      width: 227px;
+      height: 36px;
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      border-radius: 8px;
+    }
+    > :not(:first-child) {
+      background-color: $white-200;
+      margin-bottom: 7px;
+    }
+    > p > span:first-child {
+      margin-right: 5px;
+    }
+    > p > span:last-child {
+      margin-left: 5px;
+    }
+  }
+  .account-button-container {
+    display: flex;
+    margin-right: 10px;
+    > button {
+      font: normal normal normal 15px/23px Nunito;
+      color: $white-100;
+      width: 86px;
+      height: 30px;
+      border-radius: 8px;
+    }
+    > button:first-child {
+      margin-right: 10px;
+    }
+    &-rejected {
+      display: flex;
+      align-items: center;
+      font: normal normal normal 15px/23px Nunito;
+      color: $warning-border;
+    }
+    &-accepted {
+      display: flex;
+      align-items: center;
+      font: normal normal normal 15px/23px Nunito;
+      color: $input-border;
+    }
   }
 }

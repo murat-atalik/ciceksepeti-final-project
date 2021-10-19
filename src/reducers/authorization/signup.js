@@ -14,7 +14,7 @@ const signup = (state = initialState, action) => {
     case AUTH_TYPES.FETCH_SIGNUP_SUCCESS:
       return {
         ...state,
-        postData: action.payload,
+        postData: action.payload.access_token,
         isFetching: false,
         isError: '',
         isSignedIn: true,

@@ -34,6 +34,7 @@ export const fetchSigninInfo = (user) => async (dispatch) => {
       });
       localStorage.setItem('access-token', response.data.access_token);
       localStorage.setItem('email', user.email);
+      localStorage.setItem('isSignedin', true);
     })
     .catch((err) => {
       dispatch(fetchSigninError(err));

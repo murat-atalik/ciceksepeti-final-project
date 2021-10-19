@@ -11,7 +11,7 @@ import ConfirmationModal from 'components/Modal/ConfirmationModal';
 import OfferModal from 'components/Modal/OfferModal';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 function Product() {
   const { id } = useParams();
@@ -23,21 +23,38 @@ function Product() {
   const [withdrawOffer, setWithdrawOffer] = useState(false);
   const [offerModalVisibility, setOfferModalVisibilty] = useState(false);
   const [offerPrice, setOfferPrice] = useState({ offeredPrice: 0 });
+  const authenticated = localStorage.getItem('isSignedin') === 'true';
+  const history = useHistory();
+
   const toggleBuyModal = () => {
-    setBuyModal((prev) => !prev);
+    if (authenticated) {
+      setBuyModal((prev) => !prev);
+    } else {
+      history.push('/signin');
+    }
   };
   const toggleWithDrawOffer = () => {
-    setWithdrawOffer((prev) => !prev);
+    if (authenticated) {
+      setWithdrawOffer((prev) => !prev);
+    } else {
+      history.push('/signin');
+    }
   };
   const togggleOfferModal = () => {
-    setOfferModalVisibilty((prev) => !prev);
+    if (authenticated) {
+      setOfferModalVisibilty((prev) => !prev);
+    } else {
+      history.push('/signin');
+    }
   };
   const giveOffer = () => {
     dispatch(fetchOfferProductInfo(id, offerPrice));
     setOfferModalVisibilty(false);
   };
   const buyOffer = () => {
-    dispatch(fetchPurchaseProductInfo(id));
+    dispatch(
+      fetchPurchaseProductInfo(id, localStorage.getItem('access-token'))
+    );
     setBuyModal(false);
   };
   const cancelOffer = () => {
@@ -102,6 +119,7 @@ function Product() {
                 </div>
                 {!getProduct.product.isSold &&
                   (offer?.status === 'offered' ||
+                    offer?.status === 'accepted' ||
                     offer?.status === 'rejected') && (
                     <div className="product-offer-container">
                       <p className="product-offer-label">Verilen Teklif:</p>
@@ -132,6 +150,7 @@ function Product() {
                   {!getProduct.product.isSold &&
                     getProduct.product.isOfferable &&
                     (offer?.status === 'offered' ||
+                      offer?.status === 'accepted' ||
                       offer?.status === 'rejected') && (
                       <Button theme="secondary" onClick={toggleWithDrawOffer}>
                         Teklifi Geri Çek

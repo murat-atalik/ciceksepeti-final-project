@@ -9,12 +9,12 @@ import validate from '../../helpers/validationHelper';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
 
-function FormComponent({ type, fetch, isSignedIn }) {
+function FormComponent({ type, fetch, isSignedIn, isFetching }) {
   const [values, setValues] = useState({ email: '', password: '' });
   const dispatch = useDispatch();
   const history = useHistory();
   const log = (value) => {
-    if (!isSignedIn) {
+    if (!isSignedIn && !isFetching) {
       dispatch(fetch(value));
     }
   };
