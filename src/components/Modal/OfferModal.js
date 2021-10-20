@@ -7,7 +7,7 @@ import useValidation from 'hooks/useValidation';
 import React, { useState } from 'react';
 
 import Close from '../../assests/Group6618.svg';
-import CheckBox from './CheckBox';
+import ModalCheckBox from './ModalCheckBox';
 
 function OfferModal({
   callback,
@@ -97,19 +97,19 @@ function OfferModal({
             </div>
           </div>
           <div className="offer-modal-wrapper-inner-offer">
-            <CheckBox
+            <ModalCheckBox
               label="%20’si Kadar Teklif Ver"
               value={percent20}
               className={percent20 ? 'checked-active' : 'checked-default'}
               callback={checked20}
             />
-            <CheckBox
+            <ModalCheckBox
               label="%30’u Kadar Teklif Ver"
               value={percent30}
               className={percent30 ? 'checked-active' : 'checked-default'}
               callback={checked30}
             />
-            <CheckBox
+            <ModalCheckBox
               label="%40’ı Kadar Teklif Ver"
               value={percent40}
               callback={checked40}

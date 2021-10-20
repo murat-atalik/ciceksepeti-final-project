@@ -1,0 +1,51 @@
+@import '../../style/variables';
+
+.toggle-switch {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  > p {
+    pointer-events: none;
+    display: inline-block;
+    width: 170px;
+    height: 22px;
+    font: normal normal normal 16px/22px Nunito;
+    color: $grey-300;
+  }
+  width: 240px;
+  height: 24px;
+  &-slider-on,
+  &-slider-off {
+    position: relative;
+    cursor: pointer;
+    width: 44px;
+    height: 24px;
+    padding: 12px;
+    border-radius: 12px;
+    margin-left: 30px;
+  }
+  &-slider-off {
+    background-color: $white-500;
+  }
+  &-slider-on {
+    background-color: $input-border;
+  }
+
+  &-on,
+  &-off {
+    background-color: $white-100;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    box-shadow: 0px 2px 4px #1e36482e;
+  }
+  &-off {
+    left: 2px;
+  }
+  &-on {
+    right: 2px;
+  }
+}

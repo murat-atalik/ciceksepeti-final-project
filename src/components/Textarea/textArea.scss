@@ -1,0 +1,37 @@
+@import '../../style/variables';
+
+.textarea-container {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  > label {
+    color: $grey-200;
+    font: normal normal normal 15px/20px Nunito;
+    margin-bottom: 5px;
+  }
+}
+
+.textarea-description {
+  width: 100%;
+  min-width: 335px;
+  height: 92px;
+  resize: none;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+  font: normal normal normal 16px/22px Nunito;
+  background-color: $white-300;
+  color: $grey-500;
+  &:hover {
+    background-color: $input-inner;
+    border: 1px solid $input-border;
+    color: $grey-300;
+  }
+  &:focus {
+    background-color: $input-inner;
+    border: 1px solid $input-border;
+    color: $grey-300;
+  }
+}

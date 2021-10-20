@@ -147,7 +147,7 @@ function Account() {
                       </p>
                     )}
                     {item.status === 'accepted' && item.product.isSold && (
-                      <p className="account-button-container-accepted">
+                      <p className="account-button-container-sold">
                         Satın Alındı
                       </p>
                     )}
@@ -204,7 +204,7 @@ function Account() {
                       </p>
                     )}
                     {item.status === 'accepted' && item.product.isSold && (
-                      <p className="account-button-container-accepted">
+                      <p className="account-button-container-sold">
                         Satın Alındı
                       </p>
                     )}

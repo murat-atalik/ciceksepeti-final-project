@@ -9,11 +9,11 @@ const initialState = {
 const allStatus = (state = initialState, action) => {
   switch (action.type) {
     case STATUS_TYPES.FETCH_ALLSTATUS_START:
-      return { ...state, isFetching: true, postData: [], isError: '' };
+      return { ...state, isFetching: true, allStatus: [], isError: '' };
     case STATUS_TYPES.FETCH_ALLSTATUS_SUCCESS:
       return {
         ...state,
-        postData: action.payload,
+        allStatus: action.payload,
         isFetching: false,
         isError: '',
       };

@@ -23,7 +23,7 @@ function Header() {
         <div className="header-buttons">
           {localStorage.getItem('email') && (
             <Button
-              className="header-add-btn"
+              className="header-add-button"
               theme="secondary"
               onClick={goAddProduct}
             >
@@ -33,7 +33,7 @@ function Header() {
           )}
           {localStorage.getItem('email') ? (
             <Button
-              className="account-btn"
+              className="header-account-button"
               theme="secondary"
               onClick={goAccount}
             >
@@ -42,7 +42,7 @@ function Header() {
             </Button>
           ) : (
             <Button
-              className="account-btn"
+              className="header-account-button"
               theme="secondary"
               onClick={goSignin}
             >

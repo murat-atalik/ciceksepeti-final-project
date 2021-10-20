@@ -85,6 +85,7 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+    margin-left: 20px;
     > p {
       width: 227px;
       height: 36px;
@@ -128,6 +129,12 @@
       align-items: center;
       font: normal normal normal 15px/23px Nunito;
       color: $input-border;
+    }
+    &-sold {
+      display: flex;
+      align-items: center;
+      font: normal normal normal 15px/23px Nunito;
+      color: $success;
     }
   }
 }
