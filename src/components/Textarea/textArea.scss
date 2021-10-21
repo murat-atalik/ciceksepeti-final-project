@@ -35,3 +35,29 @@
     color: $grey-300;
   }
 }
+.textarea-description-err {
+  width: 100%;
+  min-width: 335px;
+  height: 92px;
+  resize: none;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+  font: normal normal normal 16px/22px Nunito;
+  background-color: $warning-inner;
+  color: $warning-border;
+  &:hover {
+    background-color: $warning-inner;
+    border: 1px solid $warning-border;
+  }
+  &:focus {
+    background-color: $warning-inner;
+    border: 1px solid $warning-border;
+  }
+  &::placeholder,
+  &::-webkit-input-placeholder {
+    color: $warning-border;
+  }
+}

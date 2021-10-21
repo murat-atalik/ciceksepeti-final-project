@@ -2,7 +2,7 @@ import './textArea.scss';
 
 import React from 'react';
 
-function TextArea({ id, title, placeholder, value, setValue, ...rest }) {
+function TextArea({ id, title, placeholder, value, setValue, theme, ...rest }) {
   return (
     <>
       <div className="textarea-container" {...rest}>
@@ -12,7 +12,9 @@ function TextArea({ id, title, placeholder, value, setValue, ...rest }) {
           value={value}
           onChange={(e) => setValue(e.target.value)}
           placeholder={placeholder}
-          className="textarea-description"
+          className={
+            theme ? 'textarea-description-err' : 'textarea-description'
+          }
         />
       </div>
     </>

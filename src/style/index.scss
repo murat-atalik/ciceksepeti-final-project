@@ -3,6 +3,7 @@
 @import './variables';
 body {
   font-family: 'Nunito', sans-serif;
+  background-color: $white-200;
 }
 .react-toastfiy {
   --toastify-color-success: #f1fff0;

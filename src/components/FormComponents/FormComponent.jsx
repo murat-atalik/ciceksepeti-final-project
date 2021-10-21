@@ -13,13 +13,13 @@ function FormComponent({ type, fetch, isSignedIn, isFetching }) {
   const [values, setValues] = useState({ email: '', password: '' });
   const dispatch = useDispatch();
   const history = useHistory();
-  const log = (value) => {
+  const validateForm = (value) => {
     if (!isSignedIn && !isFetching) {
       dispatch(fetch(value));
     }
   };
   const { handleSubmit, handleChange, errors } = useValidation(
-    log,
+    validateForm,
     validate,
     values
   );
@@ -47,9 +47,9 @@ function FormComponent({ type, fetch, isSignedIn, isFetching }) {
         <div className="input-div">
           <p className="form-label">Email</p>
           <Input
-            theme={errors.email && 'warning'}
+            theme={errors.emailErr && 'warning'}
             className="email-input"
-            type="email"
+            type="text"
             name="email"
             value={values.email}
             placeholder="example@example.com"
@@ -61,12 +61,12 @@ function FormComponent({ type, fetch, isSignedIn, isFetching }) {
               handleChange();
             }}
           />
-          {errors.email && <p className="form-error">{errors.email}</p>}
+          {errors.emailErr && <p className="form-error">{errors.emailMsg}</p>}
         </div>
         <div className="input-div">
           <p className="form-label">Şifre</p>
           <Input
-            theme={errors.password && 'warning'}
+            theme={errors.passwordErr && 'warning'}
             className="password-input"
             type="password"
             name="password"
@@ -80,7 +80,9 @@ function FormComponent({ type, fetch, isSignedIn, isFetching }) {
               handleChange();
             }}
           />
-          {errors.password && <p className="form-error">{errors.password}</p>}
+          {errors.passwordErr && (
+            <p className="form-error">{errors.passwordMsg}</p>
+          )}
         </div>
         <Button type="submit" theme="primary" className="custom-btn">
           {type === 'signup' ? 'Üye Ol' : 'Giriş Yap'}

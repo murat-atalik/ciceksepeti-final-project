@@ -7,29 +7,23 @@ function ListBox({
   list,
   title,
   body,
-  setSelected,
   selected,
+  setSelected,
   toggle,
   setToggle,
-  closeOtherList,
-  name,
   theme,
 }) {
   const setItem = (item) => {
     setSelected(item);
     setToggle(!toggle);
   };
-  const toggleList = () => {
-    if (toggle) {
-      setToggle(!toggle);
-    } else {
-      closeOtherList(name);
-    }
-    console.log('object');
-  };
   return (
     <div>
-      <p className="list-box-title" onClick={toggleList} aria-hidden="true">
+      <p
+        className="list-box-title"
+        onClick={() => setToggle(!toggle)}
+        aria-hidden="true"
+      >
         {title}
       </p>
       <div
@@ -37,7 +31,7 @@ function ListBox({
       >
         <div
           className="list-box-btn"
-          onClick={() => (toggle ? setToggle(!toggle) : closeOtherList(name))}
+          onClick={() => setToggle(!toggle)}
           aria-hidden="true"
         >
           {selected.title.length > 0 ? selected.title : body}

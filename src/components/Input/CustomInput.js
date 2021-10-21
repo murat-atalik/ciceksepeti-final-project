@@ -7,6 +7,7 @@ const theme = {
     activeBackground: '#F0F8FF',
     color: '#99A0A7',
     activeColor: '#3E3E3E',
+    placeholderTextColor: '#99A0A7',
   },
   warning: {
     background: '#FFF2F2 ',
@@ -14,6 +15,7 @@ const theme = {
     activeBackground: '#FFF2F2',
     color: '#F77474',
     activeColor: '#F77474',
+    placeholderTextColor: '#F77474',
   },
 };
 const CustomInput = styled.input`
@@ -25,6 +27,11 @@ const CustomInput = styled.input`
   outline: none;
   cursor: pointer;
   font-family: 'Nunito', sans-serif;
+  ::placeholder,
+  ::-webkit-input-placeholder {
+    color: ${(props) => theme[props.theme].placeholderTextColor};
+  }
+
   &:hover {
     border: 1px solid ${(props) => theme[props.theme].activeBorder};
     background-color: ${(props) => theme[props.theme].activeBackground};

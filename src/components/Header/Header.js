@@ -28,7 +28,7 @@ function Header() {
               onClick={goAddProduct}
             >
               <img src={add} alt="Ürün Ekle" className="header-add-img" />
-              Ürün Ekle
+              <span>Ürün Ekle</span>
             </Button>
           )}
           {localStorage.getItem('email') ? (
@@ -38,7 +38,7 @@ function Header() {
               onClick={goAccount}
             >
               <img src={user} alt="Hesabım" className="header-account-img" />
-              Hesabım
+              <span>Hesabım</span>
             </Button>
           ) : (
             <Button

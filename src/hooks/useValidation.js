@@ -13,7 +13,8 @@ const useValidation = (callback, validate, values) => {
     setIsSubmitting(true);
   };
   useEffect(() => {
-    if (Object.keys(errors).length === 0 && isSubmitting) {
+    if (isSubmitting && Object.keys(errors).length === 0) {
+      setIsSubmitting(false);
       callback(values);
     }
   }, [callback, errors, isSubmitting, values]);

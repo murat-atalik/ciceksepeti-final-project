@@ -20,7 +20,6 @@
     text-transform: capitalize;
   }
   .wrapper-categories {
-    width: get-vw(1480px);
     overflow: auto;
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
@@ -29,6 +28,7 @@
     }
   }
   .category-links {
+    width: 100%;
     margin-top: 30px;
     display: flex;
     justify-content: space-between;
@@ -87,6 +87,18 @@
     display: grid;
     justify-content: space-between;
     justify-items: stretch;
-    grid-template-columns: repeat(auto-fit, minmax(180px, get-vw(280px)));
+    grid-template-columns: repeat(auto-fit, minmax(173px, get-vw(280px)));
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .products-body {
+    margin: 0 10px;
+    > img {
+      border-radius: 8px;
+    }
+  }
+  .wrapper-categories {
+    margin: 0 10px;
   }
 }

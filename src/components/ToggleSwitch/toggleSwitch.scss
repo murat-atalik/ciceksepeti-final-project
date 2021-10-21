@@ -46,6 +46,15 @@
     left: 2px;
   }
   &-on {
-    right: 2px;
+    animation: slideIn 0.5s linear 0s 1 normal forwards;
+  }
+}
+@keyframes slideIn {
+  0% {
+    transform: translateX(-10px);
+  }
+
+  100% {
+    transform: translateX(10px);
   }
 }

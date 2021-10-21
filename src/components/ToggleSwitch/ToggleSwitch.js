@@ -3,6 +3,9 @@ import './toggleSwitch.scss';
 import React from 'react';
 
 function ToggleSwitch({ toggle, switchToggle }) {
+  const setSwitchToggle = () => {
+    switchToggle(!toggle);
+  };
   return (
     <>
       <div className="toggle-switch">
@@ -11,7 +14,7 @@ function ToggleSwitch({ toggle, switchToggle }) {
           className={
             toggle ? 'toggle-switch-slider-on' : 'toggle-switch-slider-off'
           }
-          onClick={switchToggle}
+          onClick={setSwitchToggle}
           aria-hidden="true"
         >
           <div className={toggle ? 'toggle-switch-on' : 'toggle-switch-off'} />

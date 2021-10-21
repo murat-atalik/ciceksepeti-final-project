@@ -1,0 +1,63 @@
+@import '../../style/variables';
+
+.upload-image-container {
+  margin-top: 25px;
+  width: get-vw(595px);
+  height: 164px;
+}
+
+.upload-image-container-error {
+  margin-top: 25px;
+  width: get-vw(595px);
+  height: 164px;
+  > div {
+    border-color: $warning-border !important;
+    background-color: $warning-inner !important;
+    color: $warning-border !important;
+  }
+  .upload-container-box {
+    color: $warning-inner;
+    background-color: $warning-border;
+  }
+  .upload-container-alert {
+    color: $warning-border;
+  }
+  .upload-container-body {
+    color: $warning-border;
+  }
+}
+.upload-icon {
+  margin-top: 20px;
+}
+.upload-container-body {
+  color: $grey-300;
+  text-align: center;
+  font: normal normal normal 14px/15px Nunito;
+  cursor: default;
+}
+.upload-container-box {
+  width: 122px;
+  height: 30px;
+  margin-top: 5px;
+  border-radius: 15px;
+  color: $grey-100;
+  background-color: $white-300;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  > p {
+    width: 85px;
+    height: 20px;
+    font: normal normal normal 15px Nunito;
+    cursor: pointer;
+  }
+}
+.upload-container-alert {
+  color: $grey-100;
+  margin-top: 10px;
+  text-align: center;
+  font: normal normal normal 12px/14px Nunito;
+  cursor: default;
+}

@@ -9,17 +9,33 @@
 
 .add-product-container {
   width: get-vw(1480px);
-  min-width: 355px;
-  min-height: get-vh(812px);
+  min-width: 375px;
+  min-height: 730px;
   background-color: $white-100;
   margin: 20px auto;
   padding: 8px;
   border-radius: 8px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+  &-bottom {
+    width: get-vw(1480px);
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    > button {
+      width: 315px;
+      height: 45px;
+      padding: 8px;
+      border-radius: 8px;
+      text-align: center;
+      font: normal normal bold 18px/24px Nunito;
+      margin: 0 30px 30px 0;
+    }
+  }
   &-left,
   &-right {
-    margin: 0 get-vw(30px) 0 get-vw(46px);
+    margin: 0 get-vw(30px);
     min-width: 335px;
     display: flex;
     flex-direction: column;
@@ -29,6 +45,14 @@
       font: normal normal bold 25px/23px Nunito;
       color: $grey-200;
     }
+  }
+  &-left {
+    width: get-vw(730px);
+    min-height: 630px;
+  }
+  &-right {
+    width: get-vw(595px);
+    min-height: 300px;
   }
   .product-title-container {
     margin-top: 25px;
@@ -41,6 +65,7 @@
     }
     > input {
       height: 45px;
+      font: normal normal normal 16px/22px Nunito;
     }
   }
   .product-price-container {
@@ -55,6 +80,7 @@
     }
     > input {
       height: 45px;
+      font: normal normal normal 16px/22px Nunito;
     }
   }
   .product-offerable-container {
@@ -75,22 +101,40 @@
 .container-brace {
   margin: 0px;
   border: 0.5px solid $white-200;
+  height: 630px;
 }
 
 @media only screen and (max-width: 1133px) {
   .container-brace {
-    border: 0.5px solid transparent;
+    display: none;
   }
   .add-product-container {
-    &-left {
+    &-left,
+    &-right {
       width: get-vw(1480px);
+    }
+    &-right {
+      > div {
+        width: 100%;
+      }
     }
     .list-box-conatiner {
       width: 100%;
     }
     &-left,
     &-right {
-      margin: 0 30px;
+      margin: 0 10px;
+    }
+    &-bottom {
+      width: get-vw(1480px);
+      min-width: 335px;
+      margin: 0 10px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      > button {
+        margin: auto;
+      }
     }
   }
 }

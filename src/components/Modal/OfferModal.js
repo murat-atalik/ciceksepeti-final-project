@@ -119,7 +119,7 @@ function OfferModal({
           <div className="offer-input">
             <Input
               type="number"
-              theme={errors.offeredPrice ? 'warning' : 'primary'}
+              theme={errors.offeredPriceErr ? 'warning' : 'primary'}
               value={inputValue > 0 ? inputValue : ''}
               onClick={(e) => {
                 changeValue(e);
@@ -131,14 +131,14 @@ function OfferModal({
             />
             <span
               className={
-                errors.offeredPrice
+                errors.offeredPriceErr
                   ? 'offer-input-price-error'
                   : 'offer-input-price'
               }
             >
               TL
             </span>
-            <span className="error-span">{errors.offeredPrice}</span>
+            <span className="error-span">{errors.offeredPriceMsg}</span>
           </div>
           <div className="offer-modal-wrapper-buttons">
             <CustomButton theme="primary" onClick={handleSubmit}>

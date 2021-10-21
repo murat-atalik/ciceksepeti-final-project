@@ -5,26 +5,55 @@ import { fetchAllBrandsInfo } from 'actions/brand/getAllBrands';
 import { fetchAllCategoriesInfo } from 'actions/category/getAllCategories';
 import { fetchAllColorsInfo } from 'actions/color/allColors';
 import { fetchAllStatusesInfo } from 'actions/status/allStatus';
+import Button from 'components/Button/Button';
 import Header from 'components/Header/Header';
 import Input from 'components/Input/Input';
 import ListBox from 'components/ListBox/ListBox';
 import TextArea from 'components/Textarea/TextArea';
 import ToggleSwitch from 'components/ToggleSwitch/ToggleSwitch';
+import UploadImage from 'components/UploadImage/UploadImage';
+import validation from 'helpers/addProductValidation';
+import useValidation from 'hooks/useValidation';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+const defaultToggle = {
+  colors: false,
+  categories: false,
+  status: false,
+  brands: false,
+};
+const defaultProduct = {
+  price: 0,
+  imageUrl: '',
+  title: '',
+  status: {
+    title: '',
+    id: '',
+  },
+  color: {
+    title: '',
+    id: '',
+  },
+  brand: {
+    title: '',
+    id: '',
+  },
+  category: {
+    title: '',
+    id: '',
+  },
+  description: '',
+  isOfferable: false,
+};
 function AddProduct() {
-  const [toggle, setToggle] = useState(false);
+  const dispatch = useDispatch();
   const allCategories = useSelector((state) => state.allCategories);
   const allColors = useSelector((state) => state.allColors);
   const allBrands = useSelector((state) => state.allBrands);
   const allStatus = useSelector((state) => state.allStatus);
-
-  const dispatch = useDispatch();
-  const switchToggle = () => {
-    setToggle(!toggle);
-  };
-
+  const [toggleList, setToggleList] = useState(defaultToggle);
+  const [productAdd, setProductAdd] = useState(defaultProduct);
   useEffect(() => {
     if (allCategories.allCategories.length === 0 && !allCategories.isFetching) {
       dispatch(fetchAllCategoriesInfo());
@@ -40,47 +69,21 @@ function AddProduct() {
     }
   }, [allBrands, allCategories, allColors, allStatus, dispatch]);
 
-  const [myColor, setmyColor] = useState({
-    id: '',
-    title: '',
-  });
-  const [toggleColors, setToggleColors] = useState(false);
-  const [toggleCategories, setToggleCategories] = useState(false);
-  const [toggleStatus, setToggleStatus] = useState(false);
-  const [toggleBrands, setToggleBrands] = useState(false);
-  const [teaxtArea, setteaxtArea] = useState('');
-  const log = (item) => {
-    setmyColor(item);
+  const closeAllList = () => setToggleList(defaultToggle);
+  const closeOtherList = (list) => setToggleList({ ...defaultToggle, ...list });
+  const setForm = (value) => setProductAdd({ ...productAdd, ...value });
+  const callback = (value) => {
+    console.log('asdasd :>> ', value);
   };
-  const closeAllList = () => {
-    setToggleColors(false);
-    setToggleCategories(false);
-    setToggleStatus(false);
-    setToggleBrands(false);
-  };
-
-  const closeOtherList = (list) => {
-    setToggleColors(false);
-    setToggleCategories(false);
-    setToggleStatus(false);
-    setToggleBrands(false);
-    if (list === 'categories') {
-      setToggleCategories(true);
-    }
-    if (list === 'colors') {
-      setToggleColors(true);
-    }
-    if (list === 'status') {
-      setToggleStatus(true);
-    }
-    if (list === 'brands') {
-      setToggleBrands(true);
-    }
-  };
-
+  const { handleSubmit, errors } = useValidation(
+    callback,
+    validation,
+    productAdd
+  );
   return (
     <>
       <Header />
+      <pre>{JSON.stringify(errors, undefined, 2)}</pre>
       <div className="add-product">
         <div className="add-product-container">
           <div className="add-product-container-left">
@@ -91,71 +94,76 @@ function AddProduct() {
                 Ürün Adı
               </label>
               <Input
+                theme={errors.titleErr ? 'warning' : 'primary'}
                 className="product-name-input"
                 type="text"
                 name="title"
                 placeholder="Örnek: Iphone 12 Pro Max"
                 id="product-input"
                 onClick={closeAllList}
+                value={productAdd.title}
+                onChange={(e) => {
+                  setForm({
+                    title: e.target.value,
+                  });
+                }}
               />
             </div>
 
             <TextArea
               id="description"
               title="Açıklama"
-              value={teaxtArea}
+              value={productAdd.description}
               placeholder="Ürün açıklaması girin"
-              setValue={setteaxtArea}
+              setValue={(value) => setForm({ description: value })}
               onClick={closeAllList}
+              onChange={(e) => {
+                setForm({
+                  description: e.target.value,
+                });
+              }}
+              theme={errors.descriptionErr}
             />
             <div className="list-box-conatiner">
               <ListBox
                 list={allColors.allColors}
                 title="Renk"
                 body="Renk seç"
-                selected={myColor}
-                setSelected={log}
-                toggle={toggleColors}
-                setToggle={setToggleColors}
-                name="colors"
-                closeOtherList={closeOtherList}
-                theme="warning"
+                selected={productAdd.color}
+                setSelected={(value) => setForm({ color: value })}
+                toggle={toggleList.colors}
+                setToggle={(value) => closeOtherList({ colors: value })}
+                theme={errors.colorErr ? 'warning' : 'primary'}
               />
               <ListBox
                 list={allStatus.allStatus}
                 title="Kullanım durumu"
                 body="Kullanım durumu seç"
-                selected={myColor}
-                setSelected={log}
-                toggle={toggleStatus}
-                setToggle={setToggleStatus}
-                name="status"
-                closeOtherList={closeOtherList}
-                theme="primary"
+                selected={productAdd.status}
+                setSelected={(value) => setForm({ status: value })}
+                toggle={toggleList.status}
+                setToggle={(value) => closeOtherList({ status: value })}
+                theme={errors.statusErr ? 'warning' : 'primary'}
               />
               <ListBox
                 list={allCategories.allCategories}
                 title="Kategori"
                 body="Kategori seç"
-                selected={myColor}
-                setSelected={log}
-                toggle={toggleCategories}
-                setToggle={setToggleCategories}
-                name="categories"
-                closeOtherList={closeOtherList}
-                theme="primary"
+                selected={productAdd.category}
+                setSelected={(value) => setForm({ category: value })}
+                toggle={toggleList.categories}
+                setToggle={(value) => closeOtherList({ categories: value })}
+                theme={errors.categoryErr ? 'warning' : 'primary'}
               />
               <ListBox
                 list={allBrands.allBrands}
                 title="Marka"
                 body="Marka seç"
-                selected={myColor}
-                setSelected={log}
-                toggle={toggleBrands}
-                setToggle={setToggleBrands}
-                name="brands"
-                closeOtherList={closeOtherList}
-                theme="primary"
+                selected={productAdd.brand}
+                setSelected={(value) => setForm({ brand: value })}
+                toggle={toggleList.brands}
+                setToggle={(value) => closeOtherList({ brands: value })}
+                theme={errors.brandErr ? 'warning' : 'primary'}
               />
             </div>
             <div className="product-price-container">
@@ -163,21 +171,39 @@ function AddProduct() {
                 Fiyat
               </label>
               <Input
+                theme={errors.priceErr ? 'warning' : 'primary'}
                 className="product-price-input"
                 type="text"
                 name="price"
                 placeholder="Bir fiyat girin"
                 id="product-price"
                 onClick={closeAllList}
+                value={productAdd.price === 0 ? '' : productAdd.price}
+                onChange={(e) => {
+                  setForm({
+                    price: e.target.value,
+                  });
+                }}
               />
             </div>
             <div className="product-offerable-container">
-              <ToggleSwitch toggle={toggle} switchToggle={switchToggle} />
+              <ToggleSwitch
+                toggle={productAdd.isOfferable}
+                switchToggle={(value) => setForm({ isOfferable: value })}
+              />
             </div>
           </div>
           <hr className="container-brace" />
-          <div className="add-product-container-right">
+          <div
+            className="add-product-container-right"
+            onClick={closeAllList}
+            aria-hidden
+          >
             <h2>Ürün Görseli</h2>
+            <UploadImage warn={errors.imageUrlErr ? 'true' : 'false'} />
+          </div>
+          <div className="add-product-container-bottom">
+            <Button onClick={handleSubmit}>Kaydet</Button>
           </div>
         </div>
       </div>
