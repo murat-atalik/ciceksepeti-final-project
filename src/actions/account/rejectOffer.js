@@ -8,19 +8,23 @@ import { fetchRecievedOffersInfo } from './receivedOffers';
 export const fetchRejectOfferStart = () => ({
   type: ACCOUNT_TYPES.FETCH_REJECTOFFER_START,
 });
+
 export const fetchRejectOfferSuccess = (post) => ({
   type: ACCOUNT_TYPES.FETCH_REJECTOFFER_SUCCESS,
   payload: post,
 });
+
 export const fetchRejectOfferError = (err) => ({
   type: ACCOUNT_TYPES.FETCH_REJECTOFFER_ERROR,
   payload: err,
 });
+
 const config = {
   headers: {
     Authorization: `Bearer ${localStorage.getItem('access-token')}`,
   },
 };
+
 export const fetchRejectOfferInfo = (id) => async (dispatch) => {
   dispatch(fetchRejectOfferStart());
   return axios

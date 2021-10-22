@@ -30,7 +30,7 @@ export default combineReducers({
   createProduct: CreateProductReducer,
   offerProduct: OfferProductReducer,
   purchaseProduct: PurchaseProductReducer,
-  uploadIamge: UploadIamgeReducer,
+  uploadImage: UploadIamgeReducer,
   acceptOffer: AcceptOfferReducer,
   cancelOffer: CancelOfferReducer,
   givenOffers: GivenOffersReducer,

@@ -6,10 +6,12 @@ import request from '../../agent/request';
 export const fetchSigninStart = () => ({
   type: AUTH_TYPES.FETCH_SIGNIN_START,
 });
+
 export const fetchSigninSuccess = (post) => ({
   type: AUTH_TYPES.FETCH_SIGNIN_SUCCESS,
   payload: post,
 });
+
 export const fetchSigninError = (err) => ({
   type: AUTH_TYPES.FETCH_SIGNIN_ERROR,
   payload: err,

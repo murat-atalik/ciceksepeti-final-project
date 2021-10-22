@@ -4,10 +4,12 @@ import request from '../../agent/request';
 export const fetchAllColorsStart = () => ({
   type: COLOR_TYPES.FETCH_ALLCOLORS_START,
 });
+
 export const fetchAllColorsSuccess = (post) => ({
   type: COLOR_TYPES.FETCH_ALLCOLORS_SUCCESS,
   payload: post,
 });
+
 export const fetchAllColorsError = (err) => ({
   type: COLOR_TYPES.FETCH_ALLCOLORS_ERROR,
   payload: err,

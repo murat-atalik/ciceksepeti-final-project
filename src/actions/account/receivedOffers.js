@@ -4,10 +4,12 @@ import request from '../../agent/request';
 export const fetchRecievedOffersStart = () => ({
   type: ACCOUNT_TYPES.FETCH_RECEIVEDOFFERS_START,
 });
+
 export const fetchRecievedOffersSuccess = (post) => ({
   type: ACCOUNT_TYPES.FETCH_RECEIVEDOFFERS_SUCCESS,
   payload: post,
 });
+
 export const fetchRecievedOffersError = (err) => ({
   type: ACCOUNT_TYPES.FETCH_RECEIVEDOFFERS_ERROR,
   payload: err,

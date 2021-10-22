@@ -4,6 +4,7 @@ import './addProduct.scss';
 import { fetchAllBrandsInfo } from 'actions/brand/getAllBrands';
 import { fetchAllCategoriesInfo } from 'actions/category/getAllCategories';
 import { fetchAllColorsInfo } from 'actions/color/allColors';
+import { fetchCreateProductInfo } from 'actions/product/createProduct';
 import { fetchAllStatusesInfo } from 'actions/status/allStatus';
 import Button from 'components/Button/Button';
 import Header from 'components/Header/Header';
@@ -73,7 +74,7 @@ function AddProduct() {
   const closeOtherList = (list) => setToggleList({ ...defaultToggle, ...list });
   const setForm = (value) => setProductAdd({ ...productAdd, ...value });
   const callback = (value) => {
-    console.log('asdasd :>> ', value);
+    dispatch(fetchCreateProductInfo(value));
   };
   const { handleSubmit, errors } = useValidation(
     callback,
@@ -83,7 +84,6 @@ function AddProduct() {
   return (
     <>
       <Header />
-      <pre>{JSON.stringify(errors, undefined, 2)}</pre>
       <div className="add-product">
         <div className="add-product-container">
           <div className="add-product-container-left">
@@ -108,63 +108,79 @@ function AddProduct() {
                   });
                 }}
               />
+              <span>{errors.titleMsg}</span>
             </div>
 
-            <TextArea
-              id="description"
-              title="Açıklama"
-              value={productAdd.description}
-              placeholder="Ürün açıklaması girin"
-              setValue={(value) => setForm({ description: value })}
-              onClick={closeAllList}
-              onChange={(e) => {
-                setForm({
-                  description: e.target.value,
-                });
-              }}
-              theme={errors.descriptionErr}
-            />
+            <div className="product-description-container">
+              <TextArea
+                id="description"
+                title="Açıklama"
+                value={productAdd.description}
+                placeholder="Ürün açıklaması girin"
+                setValue={(value) => setForm({ description: value })}
+                onClick={closeAllList}
+                onChange={(e) => {
+                  setForm({
+                    description: e.target.value,
+                  });
+                }}
+                theme={errors.descriptionErr}
+              />
+              <span>{errors.descriptionMsg}</span>
+            </div>
             <div className="list-box-conatiner">
-              <ListBox
-                list={allColors.allColors}
-                title="Renk"
-                body="Renk seç"
-                selected={productAdd.color}
-                setSelected={(value) => setForm({ color: value })}
-                toggle={toggleList.colors}
-                setToggle={(value) => closeOtherList({ colors: value })}
-                theme={errors.colorErr ? 'warning' : 'primary'}
-              />
-              <ListBox
-                list={allStatus.allStatus}
-                title="Kullanım durumu"
-                body="Kullanım durumu seç"
-                selected={productAdd.status}
-                setSelected={(value) => setForm({ status: value })}
-                toggle={toggleList.status}
-                setToggle={(value) => closeOtherList({ status: value })}
-                theme={errors.statusErr ? 'warning' : 'primary'}
-              />
-              <ListBox
-                list={allCategories.allCategories}
-                title="Kategori"
-                body="Kategori seç"
-                selected={productAdd.category}
-                setSelected={(value) => setForm({ category: value })}
-                toggle={toggleList.categories}
-                setToggle={(value) => closeOtherList({ categories: value })}
-                theme={errors.categoryErr ? 'warning' : 'primary'}
-              />
-              <ListBox
-                list={allBrands.allBrands}
-                title="Marka"
-                body="Marka seç"
-                selected={productAdd.brand}
-                setSelected={(value) => setForm({ brand: value })}
-                toggle={toggleList.brands}
-                setToggle={(value) => closeOtherList({ brands: value })}
-                theme={errors.brandErr ? 'warning' : 'primary'}
-              />
+              <div className="list-box-conatiner-category">
+                <ListBox
+                  list={allCategories.allCategories}
+                  title="Kategori"
+                  body="Kategori seç"
+                  selected={productAdd.category}
+                  setSelected={(value) => setForm({ category: value })}
+                  toggle={toggleList.categories}
+                  setToggle={(value) => closeOtherList({ categories: value })}
+                  theme={errors.categoryErr ? 'warning' : 'primary'}
+                />
+                <span>{errors.categoryMsg}</span>
+              </div>
+              <div className="list-box-conatiner-brand">
+                <ListBox
+                  list={allBrands.allBrands}
+                  title="Marka"
+                  body="Marka seç"
+                  selected={productAdd.brand}
+                  setSelected={(value) => setForm({ brand: value })}
+                  toggle={toggleList.brands}
+                  setToggle={(value) => closeOtherList({ brands: value })}
+                  theme={errors.brandErr ? 'warning' : 'primary'}
+                />
+                <span>{errors.brandMsg}</span>
+              </div>
+              <div className="list-box-conatiner-color">
+                <ListBox
+                  list={allColors.allColors}
+                  title="Renk"
+                  body="Renk seç"
+                  selected={productAdd.color}
+                  setSelected={(value) => setForm({ color: value })}
+                  toggle={toggleList.colors}
+                  setToggle={(value) => closeOtherList({ colors: value })}
+                  theme={errors.colorErr ? 'warning' : 'primary'}
+                />
+                <span>{errors.colorMsg}</span>
+              </div>
+              <div className="list-box-conatiner-status">
+                <ListBox
+                  list={allStatus.allStatus}
+                  title="Kullanım durumu"
+                  body="Kullanım durumu seç"
+                  selected={productAdd.status}
+                  setSelected={(value) => setForm({ status: value })}
+                  toggle={toggleList.status}
+                  setToggle={(value) => closeOtherList({ status: value })}
+                  theme={errors.statusErr ? 'warning' : 'primary'}
+                />
+                <span>{errors.statusMsg}</span>
+              </div>
             </div>
             <div className="product-price-container">
               <label className="product-price-label" htmlFor="product-price">
@@ -173,7 +189,7 @@ function AddProduct() {
               <Input
                 theme={errors.priceErr ? 'warning' : 'primary'}
                 className="product-price-input"
-                type="text"
+                type="number"
                 name="price"
                 placeholder="Bir fiyat girin"
                 id="product-price"
@@ -181,10 +197,12 @@ function AddProduct() {
                 value={productAdd.price === 0 ? '' : productAdd.price}
                 onChange={(e) => {
                   setForm({
-                    price: e.target.value,
+                    price: Number(e.target.value),
                   });
                 }}
               />
+              <p className="add-product-price">TL</p>
+              <span>{errors.priceMsg}</span>
             </div>
             <div className="product-offerable-container">
               <ToggleSwitch
@@ -200,7 +218,12 @@ function AddProduct() {
             aria-hidden
           >
             <h2>Ürün Görseli</h2>
-            <UploadImage warn={errors.imageUrlErr ? 'true' : 'false'} />
+            <UploadImage
+              imageUrlErr={errors.imageUrlErr}
+              imageUrlMsg={errors.imageUrlMsg}
+              setSelected={(value) => setForm({ imageUrl: value })}
+              value={productAdd.imageUrl}
+            />
           </div>
           <div className="add-product-container-bottom">
             <Button onClick={handleSubmit}>Kaydet</Button>

@@ -4,10 +4,12 @@ import request from '../../agent/request';
 export const fetchAllBrandsStart = () => ({
   type: BRAND_TYPES.FETCH_ALLBRANDS_START,
 });
+
 export const fetchAllBrandsSuccess = (post) => ({
   type: BRAND_TYPES.FETCH_ALLBRANDS_SUCCESS,
   payload: post,
 });
+
 export const fetchAllBrandsError = (err) => ({
   type: BRAND_TYPES.FETCH_ALLBRANDS_ERROR,
   payload: err,

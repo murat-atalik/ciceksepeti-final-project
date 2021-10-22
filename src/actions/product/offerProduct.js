@@ -7,9 +7,11 @@ import request from '../../agent/request';
 export const fetchOfferProductStart = () => ({
   type: PRODUCT_TYPES.FETCH_OFFERPRODUCT_START,
 });
+
 export const fetchOfferProductSuccess = () => ({
   type: PRODUCT_TYPES.FETCH_OFFERPRODUCT_SUCCESS,
 });
+
 export const fetchOfferProductError = (err) => ({
   type: PRODUCT_TYPES.FETCH_OFFERPRODUCT_ERROR,
   payload: err,

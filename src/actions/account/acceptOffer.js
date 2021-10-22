@@ -8,19 +8,22 @@ import { fetchRecievedOffersInfo } from './receivedOffers';
 export const fetchAcceptOfferStart = () => ({
   type: ACCOUNT_TYPES.FETCH_ACCEPTOFFER_START,
 });
+
 export const fetchAcceptOfferSuccess = () => ({
   type: ACCOUNT_TYPES.FETCH_ACCEPTOFFER_SUCCESS,
 });
+
 export const fetchAcceptOfferError = (err) => ({
   type: ACCOUNT_TYPES.FETCH_ACCEPTOFFER_ERROR,
   payload: err,
 });
-const config = {
-  headers: {
-    Authorization: `Bearer ${localStorage.getItem('access-token')}`,
-  },
-};
+
 export const fetchAcceptOfferInfo = (id) => async (dispatch) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('access-token')}`,
+    },
+  };
   dispatch(fetchAcceptOfferStart());
   return axios
     .put(

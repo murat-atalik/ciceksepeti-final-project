@@ -4,10 +4,12 @@ import request from '../../agent/request';
 export const fetchAllProductsStart = () => ({
   type: PRODUCT_TYPES.FETCH_ALLPRODUCTS_START,
 });
+
 export const fetchAllProductsSuccess = (post) => ({
   type: PRODUCT_TYPES.FETCH_ALLPRODUCTS_SUCCESS,
   payload: post,
 });
+
 export const fetchAllProductsError = (err) => ({
   type: PRODUCT_TYPES.FETCH_ALLPRODUCTS_ERROR,
   payload: err,

@@ -39,7 +39,7 @@ export default function validationHelper(values) {
   }
   if (!values.status.title && values.status.title.length === 0) {
     errors.statusErr = true;
-    errors.statusMsg = 'Kullnaım Durumu Alanı Zorunlu!';
+    errors.statusMsg = 'Kullanım Durumu Alanı Zorunlu!';
   }
   if (!values.category.title && values.category.title.length === 0) {
     errors.categoryErr = true;

@@ -8,9 +8,11 @@ import { fetchGetProductInfo } from './getProduct';
 export const fetchPurchaseProductStart = () => ({
   type: PRODUCT_TYPES.FETCH_PURCHASEPRODUCT_START,
 });
+
 export const fetchPurchaseProductSuccess = () => ({
   type: PRODUCT_TYPES.FETCH_PURCHASEPRODUCT_SUCCESS,
 });
+
 export const fetchPurchaseProductError = (err) => ({
   type: PRODUCT_TYPES.FETCH_PURCHASEPRODUCT_ERROR,
   payload: err,

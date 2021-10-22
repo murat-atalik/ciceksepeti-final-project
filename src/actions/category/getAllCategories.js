@@ -4,10 +4,12 @@ import request from '../../agent/request';
 export const fetchAllCategoriesStart = () => ({
   type: CATEGORY_TYPES.FETCH_ALLCATEGORIES_START,
 });
+
 export const fetchAllCategoriesSuccess = (post) => ({
   type: CATEGORY_TYPES.FETCH_ALLCATEGORIES_SUCCESS,
   payload: post,
 });
+
 export const fetchAllCategoriesError = (err) => ({
   type: CATEGORY_TYPES.FETCH_ALLCATEGORIES_ERROR,
   payload: err,

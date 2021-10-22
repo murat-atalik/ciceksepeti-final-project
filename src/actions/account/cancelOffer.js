@@ -7,9 +7,11 @@ import { fetchGivenOffersInfo } from './givenOffers';
 export const fetchCancelOfferStart = () => ({
   type: ACCOUNT_TYPES.FETCH_CANCELOFFER_START,
 });
+
 export const fetchCancelOfferSuccess = () => ({
   type: ACCOUNT_TYPES.FETCH_CANCELOFFER_SUCCESS,
 });
+
 export const fetchCancelOfferError = (err) => ({
   type: ACCOUNT_TYPES.FETCH_CANCELOFFER_ERROR,
   payload: err,

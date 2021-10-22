@@ -1,10 +1,12 @@
 import './uploadImage.scss';
 
-import React, { useMemo, useState } from 'react';
+import { fetchUploadImageInfo, removeImage } from 'actions/file/imageUpload';
+import ProgressBar from 'components/ProgressBar/ProgressBar';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
+import { useDispatch, useSelector } from 'react-redux';
 
 import uploadIcon from '../../assests/Group6911.svg';
-import uploadIconWarn from '../../assests/Group6911Warn.svg';
 
 const baseStyle = {
   height: '100%',
@@ -39,8 +41,10 @@ const rejectStyle = {
   backgroundColor: '#FFF2F2',
   color: '#F77474',
 };
-const UploadImage = ({ warn }) => {
-  const [errors, setErrors] = useState(false);
+const UploadImage = ({ imageUrlErr, imageUrlMsg, setSelected, value }) => {
+  const uploadImage = useSelector((state) => state.uploadImage);
+  const dispatch = useDispatch();
+  const [errors, setErrors] = useState({ err: false, msg: '' });
   const {
     getRootProps,
     getInputProps,
@@ -54,14 +58,26 @@ const UploadImage = ({ warn }) => {
     maxSize: 409600,
     onDrop: (acceptedFiles, fileRejections) => {
       fileRejections.forEach((file) => {
-        file.errors.forEach((err) => {
-          if (err.code === 'file-too-large') {
-            setErrors(true);
+        for (let i = 0; i < file.errors.length; i = +1) {
+          const err = file.errors[i];
+          if (err.code === 'file-invalid-type') {
+            setErrors({
+              err: true,
+              msg: 'Dosya Formatı PNG/JPG/JPEG Olmalı',
+            });
+            break;
           }
-        });
+          if (err.code === 'file-too-large') {
+            setErrors({
+              err: true,
+              msg: `Dosya Boyutu 400KB'tan Büyük Olmamalı`,
+            });
+          }
+        }
       });
-      acceptedFiles.forEach(() => {
-        setErrors(false);
+      acceptedFiles.forEach((file) => {
+        setErrors({ err: false, msg: '' });
+        dispatch(fetchUploadImageInfo(file));
       });
     },
   });
@@ -75,30 +91,63 @@ const UploadImage = ({ warn }) => {
     }),
     [isDragActive, isDragReject, isDragAccept]
   );
+  const clearImageUrl = () => {
+    dispatch(removeImage());
+    setSelected('');
+  };
+
+  useEffect(() => {
+    if (
+      !uploadImage.isFetching &&
+      uploadImage.file.length > 0 &&
+      value !== uploadImage.file
+    ) {
+      setSelected(uploadImage.file);
+    }
+  }, [setSelected, uploadImage.file, uploadImage.isFetching, value]);
   return (
-    <div
-      className={
-        errors || warn === 'true'
-          ? 'upload-image-container-error'
-          : 'upload-image-container'
-      }
-    >
-      <div {...getRootProps({ style })}>
-        <input {...getInputProps()} />
-        {errors || warn === 'true' ? (
-          <img src={uploadIconWarn} alt="upload-icon" className="upload-icon" />
-        ) : (
-          <img src={uploadIcon} alt="upload-icon" className="upload-icon" />
-        )}
-        <p className="upload-container-body">Sürükleyip bırakarak yükle veya</p>
-        <div className="upload-container-box">
-          <p>Görsel Seçin</p>
+    <div className="upload-image-wrapper">
+      {uploadImage.file.length === 0 && !uploadImage.isFetching && (
+        <div className="upload-image-container">
+          <div {...getRootProps({ style })}>
+            <input {...getInputProps()} />
+
+            <img src={uploadIcon} alt="upload-icon" className="upload-icon" />
+
+            <p className="upload-container-body">
+              Sürükleyip bırakarak yükle veya
+            </p>
+            <div className="upload-container-box">
+              <p>Görsel Seçin</p>
+            </div>
+            <p className="upload-container-alert">
+              PNG ve JPEG Dosya boyutu: max. 400kb
+            </p>
+          </div>
+          <p className="upload-image-err">
+            {imageUrlMsg}
+            {imageUrlErr && errors.err && ' ve '}
+            {errors.msg}
+          </p>
         </div>
-        <p className="upload-container-alert">
-          PNG ve JPEG Dosya boyutu: max. 400kb
-        </p>
-        {errors}
-      </div>
+      )}
+      {uploadImage.file.length === 0 && uploadImage.isFetching && (
+        <ProgressBar progress={uploadImage.progress} />
+      )}
+      {uploadImage.file.length !== 0 && !uploadImage.isFetching && (
+        <div className="upload-image-preview">
+          <img src={uploadImage.file} alt="Product" />
+          <span
+            onClick={() => {
+              clearImageUrl();
+            }}
+            role="none"
+            aira-hidden="true"
+          >
+            x
+          </span>
+        </div>
+      )}
     </div>
   );
 };

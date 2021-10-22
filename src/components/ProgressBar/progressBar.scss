@@ -1,0 +1,47 @@
+@import '../../style/variables';
+
+.progressbar-wrapper {
+  margin-top: 25px;
+  width: 100%;
+  height: 164px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 25px auto 0 auto;
+  border: 1px dashed $grey-100;
+  border-radius: 10px;
+  padding: 10px;
+}
+.progressbar-container {
+  height: 4px;
+  width: 295px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  .progressbar-percent {
+    text-align: center;
+    font: normal normal normal 12px Nunito;
+    color: $grey-200;
+    margin-bottom: 5px;
+  }
+  .progressbar-slider-background {
+    height: 4px;
+    width: 100%;
+    background-color: $white-400;
+    border-radius: 2px;
+  }
+  .progressbar-slider-percent {
+    height: 4px;
+    background-color: $input-border;
+    border-radius: 2px;
+    transition: width 0.4s ease-in-out;
+  }
+  .progressbar-loading {
+    text-align: center;
+    font: normal normal normal 12px Nunito;
+    color: $grey-200;
+    margin-top: 5px;
+  }
+}
