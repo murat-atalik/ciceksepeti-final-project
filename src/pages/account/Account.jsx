@@ -27,32 +27,27 @@ function Account() {
   const [productId, setproductId] = useState('');
   const [offerId, setOfferId] = useState('');
 
-  const toggleAcceptOffer = () => {
-    setAcceptOfferModal(!acceptOfferModal);
-  };
+  const toggleAcceptOffer = () => setAcceptOfferModal(!acceptOfferModal);
+
   const acceptOffer = () => {
     dispatch(fetchAcceptOfferInfo(offerId));
     setAcceptOfferModal(false);
   };
-  const togglePurchaseOffer = () => {
-    setPurchaseOfferModal(!purchaseOfferModal);
-  };
+  const togglePurchaseOffer = () => setPurchaseOfferModal(!purchaseOfferModal);
+
   const purchaseOffer = () => {
     dispatch(
       fetchPurchaseProductInfo(productId, localStorage.getItem('access-token'))
     );
     setPurchaseOfferModal(false);
   };
-  const toggleRejectOffer = () => {
-    setRejectOfferModal(!rejectOfferModal);
-  };
+  const toggleRejectOffer = () => setRejectOfferModal(!rejectOfferModal);
+
   const rejectOffer = () => {
     dispatch(fetchRejectOfferInfo(offerId));
     setRejectOfferModal(false);
   };
-  const toggle = () => {
-    setToggleOffer(!toggleOffer);
-  };
+  const toggle = () => setToggleOffer(!toggleOffer);
 
   useEffect(() => {
     dispatch(fetchGivenOffersInfo());

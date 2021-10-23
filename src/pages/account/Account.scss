@@ -84,7 +84,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: flex-start;
     margin-left: 20px;
     > p {
       width: 227px;
@@ -94,15 +94,25 @@
       align-items: center;
       border-radius: 8px;
     }
+    > p:first-child {
+      font: normal normal normal 18px/23px Nunito;
+      color: $grey-400;
+    }
     > :not(:first-child) {
       background-color: $white-200;
       margin-bottom: 7px;
     }
     > p > span:first-child {
       margin-right: 5px;
+      font: normal normal normal 15px/20px Nunito;
+      color: $grey-100;
     }
     > p > span:last-child {
       margin-left: 5px;
+    }
+    > p:last-child {
+      font: normal normal bold 15px/20px Nunito;
+      color: $grey-200;
     }
   }
   .account-button-container {
@@ -135,6 +145,26 @@
       align-items: center;
       font: normal normal normal 15px/23px Nunito;
       color: $success;
+    }
+  }
+}
+
+@media only screen and (max-width: 730px) {
+  .account-detail-card {
+    margin-top: 10px !important;
+    width: 335px;
+    height: 134px;
+  }
+
+  .account-button-container {
+    width: 100%;
+    justify-content: flex-end;
+    margin-left: 100px;
+    position: relative;
+    > button {
+      width: 108px !important;
+      height: 30px !important;
+      margin-right: 34px !important;
     }
   }
 }

@@ -91,7 +91,7 @@
   }
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 480px) {
   .products-body {
     margin: 0 10px;
     > img {
@@ -100,5 +100,10 @@
   }
   .wrapper-categories {
     margin: 0 10px;
+  }
+}
+@media only screen and (max-width: 380px) {
+  .product-grid-container {
+    justify-content: space-around !important;
   }
 }

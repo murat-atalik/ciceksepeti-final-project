@@ -4,14 +4,16 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: get-vw(280px);
-  height: auto;
-  background-color: $white;
   min-width: 173px;
   min-height: 266px;
+
+  height: get-vh(360px);
+  background-color: $white;
+  align-items: center;
   border-radius: 8px;
   padding: 8px;
   margin-bottom: 10px;
+  overflow: hidden;
   &:hover {
     cursor: pointer;
   }
@@ -21,20 +23,29 @@
     align-items: center;
     min-width: 161px;
     min-height: 184px;
-
+    height: get-vh(260px);
+    overflow: hidden;
     img {
       min-width: 161px;
       min-height: 184px;
       width: 100%;
-      height: 100%;
+      height: auto;
     }
+  }
+  .card-product-info-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 77px;
+    justify-content: space-between;
   }
   .card-product-info {
     margin-top: 5px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
     text-transform: capitalize;
+    align-items: baseline;
     .card-brand {
       color: $input-border;
       font: normal normal bold 15px/22px Nunito;
@@ -49,9 +60,9 @@
   }
 
   .card-price {
-    margin-top: 26px;
     color: $grey-300;
     text-align: left;
     font: normal normal bold 18px/22px Nunito;
+    margin-bottom: 5px;
   }
 }

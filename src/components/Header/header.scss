@@ -18,12 +18,18 @@
     }
   }
   .header-buttons {
+    display: flex;
     .header-account-button {
       height: get-vh(40px);
       width: 116px;
       margin-left: get-vw(10.43px);
       border-radius: 8px;
       padding: 8px;
+    }
+    > button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .header-add-button {
       border-radius: 8px;
@@ -55,5 +61,18 @@
   .header-logo-redirect,
   .header-buttons {
     margin: 0 10px !important;
+  }
+}
+@media only screen and (max-width: 335px) {
+  .header-account-button {
+    width: 40px !important;
+    margin: 0 10px !important;
+    > span {
+      display: none;
+    }
+  }
+
+  .header-account-img {
+    margin: 0px !important;
   }
 }

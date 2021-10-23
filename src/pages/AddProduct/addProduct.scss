@@ -9,7 +9,7 @@
 
 .add-product-container {
   width: get-vw(1480px);
-  min-width: 375px;
+  min-width: 355px;
   min-height: 730px;
   background-color: $white-100;
   margin: 20px auto;
@@ -160,9 +160,19 @@
     display: none;
   }
   .add-product-container {
+    margin-top: 16px !important;
+    margin-bottom: 10px !important;
     &-left,
     &-right {
       width: get-vw(1480px);
+      margin-left: 2px !important;
+      margin-right: 2px !important;
+      margin-top: 8px !important;
+    }
+    &-left {
+      > h2 {
+        margin-top: 0px !important;
+      }
     }
     &-right {
       > div {

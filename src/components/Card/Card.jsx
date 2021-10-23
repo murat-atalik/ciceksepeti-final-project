@@ -13,7 +13,7 @@ function Card({ product, callback }) {
         <div className="card-img-container">
           <img src={product.imageUrl} alt={product.brand.title} />
         </div>
-        <div>
+        <div className="card-product-info-wrapper">
           <div className="card-product-info">
             <p className="card-brand">{product.brand.title}</p>
             <p className="card-color">
