@@ -46,6 +46,12 @@
     margin-right: 4.5px;
   }
 }
+@media only screen and (max-width: 768px) {
+  .header-logo-redirect,
+  .header-buttons {
+    margin: 0 10px !important;
+  }
+}
 @media only screen and (max-width: 500px) {
   .header-add-button {
     width: 40px !important;
@@ -57,10 +63,6 @@
 
   .header-add-img {
     margin: 0px !important;
-  }
-  .header-logo-redirect,
-  .header-buttons {
-    margin: 0 10px !important;
   }
 }
 @media only screen and (max-width: 335px) {

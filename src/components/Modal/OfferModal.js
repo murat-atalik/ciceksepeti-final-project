@@ -66,7 +66,6 @@ function OfferModal({
   };
   return (
     <div>
-      {offerPrice.offeredPrice}
       <div className="offer-modal-wrapper">
         <div className="offer-modal-wrapper-inner">
           <div className="offer-modal-wrapper-inner-title">

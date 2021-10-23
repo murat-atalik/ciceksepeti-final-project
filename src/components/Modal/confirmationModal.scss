@@ -45,3 +45,8 @@
     }
   }
 }
+@media only screen and (max-width: 375px) {
+  .modal-wrapper-inner {
+    margin-bottom: 0px !important;
+  }
+}

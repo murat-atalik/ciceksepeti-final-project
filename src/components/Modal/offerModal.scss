@@ -184,3 +184,42 @@
     }
   }
 }
+@media only screen and (max-width: 768px) {
+  .offer-modal-wrapper {
+    align-items: flex-start;
+    .offer-modal-wrapper-inner-title {
+      width: 315px !important;
+      margin-top: 1px;
+      margin-bottom: 13px;
+    }
+    &-inner {
+      margin: 10px !important;
+      width: 355px !important;
+      height: 407px !important;
+    }
+    .offer-modal-info {
+      width: 315px !important;
+      height: 45px !important;
+    }
+    .offer-modal-wrapper-inner-offer {
+      width: 315px !important;
+      > .checked-active {
+        margin-bottom: 10px !important;
+        height: 45px !important;
+      }
+      > .checked-default {
+        margin-bottom: 10px !important;
+        height: 45px !important;
+      }
+    }
+    .offer-input {
+      > input {
+        width: 315px !important;
+        height: 45px !important;
+      }
+    }
+    .offer-modal-wrapper-buttons {
+      margin-bottom: 10px;
+    }
+  }
+}

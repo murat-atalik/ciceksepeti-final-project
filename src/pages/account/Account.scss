@@ -148,8 +148,7 @@
     }
   }
 }
-
-@media only screen and (max-width: 730px) {
+@media only screen and (max-width: 575px) {
   .account-detail-card {
     margin-top: 10px !important;
     width: 335px;
@@ -157,14 +156,36 @@
   }
 
   .account-button-container {
-    width: 100%;
+    width: 227px !important;
     justify-content: flex-end;
-    margin-left: 100px;
+    margin-left: 88px;
+    margin-right: 0px !important;
     position: relative;
     > button {
       width: 108px !important;
       height: 30px !important;
-      margin-right: 34px !important;
+      margin-right: 49.75px !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .account-email-container {
+    width: auto;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+  }
+  .account-main-container {
+    width: auto;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+  }
+  .account-detail-card {
+    width: auto;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+    &-detail {
+      margin-left: 10px;
     }
   }
 }

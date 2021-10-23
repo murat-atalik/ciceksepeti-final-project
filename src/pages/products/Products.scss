@@ -91,7 +91,7 @@
   }
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 768px) {
   .products-body {
     margin: 0 10px;
     > img {
@@ -102,7 +102,7 @@
     margin: 0 10px;
   }
 }
-@media only screen and (max-width: 380px) {
+@media only screen and (max-width: 540px) {
   .product-grid-container {
     justify-content: space-around !important;
   }

@@ -94,28 +94,32 @@ function Product() {
                 {getProduct.product.title}
               </h2>
               <div className="info-wrapper">
-                <div className="brand-info">
-                  <p>Marka:</p>
-                  <span>{getProduct.product?.brand?.title}</span>
-                </div>
-                <div className="color-info">
-                  <p>Renk:</p>
-                  <span>{getProduct.product?.color?.title}</span>
-                </div>
-                <div className="status-info">
-                  <p>Kullanım Durumu:</p>{' '}
-                  <span>{getProduct.product?.status?.title}</span>
-                </div>
-                <div className="product-price">
-                  <p>
-                    {getProduct.product?.price
-                      ?.toLocaleString('tr-TR', {
-                        style: 'currency',
-                        currency: 'TRY',
-                      })
-                      .slice(1)}
-                  </p>
-                  <span> TL</span>
+                <div className="info-wrapper-detail">
+                  <div>
+                    <div className="brand-info">
+                      <p>Marka:</p>
+                      <span>{getProduct.product?.brand?.title}</span>
+                    </div>
+                    <div className="color-info">
+                      <p>Renk:</p>
+                      <span>{getProduct.product?.color?.title}</span>
+                    </div>
+                    <div className="status-info">
+                      <p>Kullanım Durumu:</p>{' '}
+                      <span>{getProduct.product?.status?.title}</span>
+                    </div>
+                  </div>
+                  <div className="product-price">
+                    <p>
+                      {getProduct.product?.price
+                        ?.toLocaleString('tr-TR', {
+                          style: 'currency',
+                          currency: 'TRY',
+                        })
+                        .slice(1)}
+                    </p>
+                    <span> TL</span>
+                  </div>
                 </div>
                 {!getProduct.product.isSold &&
                   (offer?.status === 'offered' ||
@@ -157,7 +161,11 @@ function Product() {
                       </Button>
                     )}
                   {getProduct.product.isSold && (
-                    <Button theme="disabled" disabled>
+                    <Button
+                      theme="disabled"
+                      disabled
+                      className="product-info-disabled-btn"
+                    >
                       Bu Ürün Satışta Değil
                     </Button>
                   )}

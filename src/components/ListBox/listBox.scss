@@ -5,8 +5,9 @@
   color: $grey-200;
   cursor: default;
 }
+//TODO:355px yazan yerler get-vh(353px ti
 .list-box {
-  width: get-vw(353px);
+  width: 355px;
   min-width: 335px;
   height: 45px;
   padding: 8px;
@@ -15,7 +16,7 @@
 }
 
 .list-box-toggle {
-  width: get-vw(353px);
+  width: 355px;
   border-radius: 8px;
   min-width: 335px;
   height: 45px;
@@ -58,7 +59,7 @@
   }
 }
 .content-wrapper {
-  width: get-vw(353px);
+  width: 355px;
   min-width: 335px;
   height: 233px;
   position: absolute;
@@ -69,7 +70,7 @@
   border-radius: 10px;
   box-shadow: 0px 3px 12px #1e36482e;
   > p {
-    width: get-vw(353px);
+    width: 355px;
     min-width: 335px;
     height: 44px;
     padding: 12px;
