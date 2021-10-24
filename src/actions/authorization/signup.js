@@ -17,6 +17,10 @@ export const fetchSignupError = (err) => ({
   payload: err,
 });
 
+export const signupLogout = () => ({
+  type: AUTH_TYPES.SIGNUP_LOG_OUT,
+});
+
 export const fetchSignupInfo = (user) => async (dispatch) => {
   dispatch(fetchSignupStart());
   return request
@@ -25,7 +29,7 @@ export const fetchSignupInfo = (user) => async (dispatch) => {
       dispatch(fetchSignupSuccess(response.data));
       toast.success('Girş başarılı.', {
         position: 'top-right',
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
@@ -42,7 +46,7 @@ export const fetchSignupInfo = (user) => async (dispatch) => {
       dispatch(fetchSignupError(err));
       toast.error('Email adresi kullanımda.', {
         position: 'top-right',
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,

@@ -4,10 +4,11 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-width: 173px;
+  /* min-width: 173px;
   min-height: 266px;
-
-  height: get-vh(360px);
+  max-width: get-vw(280px);
+  height: auto;*/
+  max-height: get-vh(392px);
   background-color: $white;
   align-items: center;
   border-radius: 8px;
@@ -21,13 +22,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-width: 161px;
+    height: calc(100% - 77px);
+    /*  min-width: 161px;
     min-height: 184px;
-    height: get-vh(260px);
+    height: get-vh(260px); */
     overflow: hidden;
     img {
-      min-width: 161px;
-      min-height: 184px;
+      object-fit: cover;
+      /* min-width: 161px;
+      min-height: 184px; */
       width: 100%;
       height: auto;
     }

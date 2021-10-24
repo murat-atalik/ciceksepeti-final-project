@@ -17,7 +17,7 @@ function Signup() {
       </div>
       <div className="form-container">
         <FormComponent
-          type="signin"
+          type="signup"
           fetch={fetchSignupInfo}
           isSignedIn={signup.isSignedIn}
           isFetching={signup.isFetching}

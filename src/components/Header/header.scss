@@ -1,6 +1,6 @@
 @import '../../style/variables';
 .header {
-  height: get-vh(80px);
+  height: 80px;
   width: 100%;
   background-color: $white;
   display: flex;
@@ -20,7 +20,7 @@
   .header-buttons {
     display: flex;
     .header-account-button {
-      height: get-vh(40px);
+      height: 40px;
       width: 116px;
       margin-left: get-vw(10.43px);
       border-radius: 8px;
@@ -33,7 +33,7 @@
     }
     .header-add-button {
       border-radius: 8px;
-      height: get-vh(40px);
+      height: 40px;
       width: 125px;
       padding: 8px;
     }
@@ -47,6 +47,9 @@
   }
 }
 @media only screen and (max-width: 768px) {
+  .header {
+    height: 60px !important;
+  }
   .header-logo-redirect,
   .header-buttons {
     margin: 0 10px !important;

@@ -29,7 +29,7 @@ export const fetchOfferProductInfo = (id, value) => async (dispatch) => {
       dispatch(fetchOfferProductSuccess());
       toast.success('Teklif başarılı', {
         position: 'top-right',
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
@@ -44,7 +44,7 @@ export const fetchOfferProductInfo = (id, value) => async (dispatch) => {
       if (err.response.status === 401) {
         toast.error('Kullanıcı sisteme giriş yapmalı', {
           position: 'top-right',
-          autoClose: 5000,
+          autoClose: 3000,
           hideProgressBar: true,
           closeOnClick: true,
           pauseOnHover: true,
@@ -56,7 +56,7 @@ export const fetchOfferProductInfo = (id, value) => async (dispatch) => {
       } else {
         toast.error('Ürün bulunamadı', {
           position: 'top-right',
-          autoClose: 5000,
+          autoClose: 3000,
           hideProgressBar: true,
           closeOnClick: true,
           pauseOnHover: true,

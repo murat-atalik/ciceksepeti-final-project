@@ -20,22 +20,21 @@ export const fetchPurchaseProductError = (err) => ({
 
 export const fetchPurchaseProductInfo = (id, token) => async (dispatch) => {
   dispatch(fetchPurchaseProductStart());
-  const config = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  };
   return axios
     .put(
       `https://bootcampapi.techcs.io/api/fe/v1/product/purchase/${id}`,
       null,
-      config
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
     )
     .then(() => {
       dispatch(fetchPurchaseProductSuccess());
       toast.success('Satın Alındı', {
         position: 'top-right',
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
@@ -50,7 +49,7 @@ export const fetchPurchaseProductInfo = (id, token) => async (dispatch) => {
       if (err.response.status === 401) {
         toast.error('Kullanıcı sisteme giriş yapmalı', {
           position: 'top-right',
-          autoClose: 5000,
+          autoClose: 3000,
           hideProgressBar: true,
           closeOnClick: true,
           pauseOnHover: true,
@@ -62,7 +61,7 @@ export const fetchPurchaseProductInfo = (id, token) => async (dispatch) => {
       } else {
         toast.error('Ürün bulunamadı', {
           position: 'top-right',
-          autoClose: 5000,
+          autoClose: 3000,
           hideProgressBar: true,
           closeOnClick: true,
           pauseOnHover: true,
@@ -73,7 +72,7 @@ export const fetchPurchaseProductInfo = (id, token) => async (dispatch) => {
         });
       }
     })
-    .then(() => {
+    .finally(() => {
       dispatch(fetchGetProductInfo(id));
       dispatch(fetchGivenOffersInfo());
     });

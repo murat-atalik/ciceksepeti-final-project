@@ -22,6 +22,7 @@
 
 .form-container {
   width: get-vw(1085px);
+  min-width: 500px !important;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -31,8 +32,9 @@
 .form {
   padding: get-vw(8px);
   width: get-vw(569px);
+  min-width: 480px !important;
   position: relative;
-  height: get-vh(554px);
+  height: 554px;
   min-width: 355px;
   background-color: $white;
   display: flex;
@@ -46,26 +48,26 @@
 .password-input,
 .email-input {
   width: get-vw(389px);
-  min-width: 242px;
-  height: get-vh(45px);
+  min-width: 328px !important;
+  height: 45px;
   font: normal normal bold 18px/24px Nunito;
 }
-.email-input {
-  margin-bottom: get-vh(15px);
+.email-input,
+.password-input {
+  margin-bottom: 15px;
 }
 .custom-btn {
-  margin-top: get-vh(30px);
-  padding: get-vh(8px);
-  border-radius: get-vh(8px);
-
-  margin-bottom: get-vh(41px);
+  margin-top: 15px;
+  padding: 8px;
+  border-radius: 8px;
+  margin-bottom: 41px;
 }
 .form-title {
   color: $grey-200;
-  margin-bottom: get-vh(50px);
-  margin-top: get-vh(70px);
+  margin-bottom: 50px;
+  margin-top: 70px;
   width: get-vw(389px);
-  min-width: 242px;
+  min-width: 328px !important;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -74,19 +76,19 @@
     font-weight: bold;
     text-align: center;
     margin-right: 0;
-    margin-bottom: get-vh(10px);
+    margin-bottom: 10px;
   }
   div {
     font-size: 15px;
     text-align: center;
     width: get-vw(389px);
-    min-width: 242px;
+    min-width: 328px !important;
   }
 }
 .form-redirect {
-  height: get-vh(20px);
+  height: 20px;
   width: get-vw(389px);
-  min-width: 242px;
+  min-width: 328px !important;
   margin-bottom: get-vw(70px);
   display: flex;
   align-items: center;
@@ -108,16 +110,17 @@
 }
 .logo {
   position: absolute;
-  top: get-vh(-134px);
+  top: -134px;
   width: get-vw(224px);
-  height: get-vh(73px);
+  min-width: 197px !important;
+  height: 73px;
   min-width: 140px;
 }
-
 .input-div {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  position: relative;
   .form-label {
     font: normal normal normal 15px/20px Nunito;
     color: $grey-200;
@@ -125,11 +128,51 @@
     margin-left: 1px;
   }
 
-  p:first-child {
+  p {
     width: get-vw(389px);
-    min-width: 242px;
+    min-width: 328px !important;
   }
   .form-error {
     color: $warning-border;
+    position: absolute;
+    font: normal normal normal 12px/20px Nunito;
+    bottom: -4px;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .signin {
+    justify-content: center;
+    > .image {
+      display: none;
+    }
+  }
+  .form-container {
+    width: 100vw !important;
+    min-width: 100vw !important;
+  }
+  .form {
+    width: 500px !important;
+    height: 435px !important;
+    min-width: 355px !important;
+    .form-title {
+      margin-top: 22px !important ;
+      margin-bottom: 30px !important ;
+    }
+  }
+  .logo {
+    top: -72.5px !important;
+    height: 48.5px !important;
+  }
+  .custom-btn {
+    margin-top: 15px !important;
+    margin-bottom: 30px !important;
+  }
+  .form-redirect {
+    margin-bottom: 40px !important;
+  }
+}
+@media only screen and (max-width: 520px) {
+  .form {
+    width: calc(100vw - 20px) !important;
   }
 }

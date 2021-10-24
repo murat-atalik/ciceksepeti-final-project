@@ -12,6 +12,7 @@ function ListBox({
   toggle,
   setToggle,
   theme,
+  closeAllList,
 }) {
   const setItem = (item) => {
     setSelected(item);
@@ -42,7 +43,7 @@ function ListBox({
           />
         </div>
         {toggle && (
-          <div className="content-wrapper">
+          <div className="content-wrapper" onMouseLeave={() => closeAllList()}>
             <p>{body}</p>
             <div className="list-box-content">
               {list.map((item) => (

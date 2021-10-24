@@ -20,6 +20,11 @@ function App() {
     localStorage.getItem('isSignedin') === 'true'
   );
   useEffect(() => {
+    if (!localStorage.getItem('isSignedin')) {
+      setLoggedIn(false);
+    }
+  }, [signin.isSignedIn, signup.isSignedIn]);
+  useEffect(() => {
     if (
       localStorage.getItem('isSignedin') === 'true' ||
       signin.isSignedIn ||

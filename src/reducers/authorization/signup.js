@@ -21,6 +21,8 @@ const signup = (state = initialState, action) => {
       };
     case AUTH_TYPES.FETCH_SIGNUP_ERROR:
       return { ...state, isError: action.payload, isFetching: false };
+    case AUTH_TYPES.SIGNUP_LOG_OUT:
+      return { ...initialState };
     default:
       return state;
   }

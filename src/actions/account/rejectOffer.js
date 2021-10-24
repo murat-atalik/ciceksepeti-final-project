@@ -19,25 +19,23 @@ export const fetchRejectOfferError = (err) => ({
   payload: err,
 });
 
-const config = {
-  headers: {
-    Authorization: `Bearer ${localStorage.getItem('access-token')}`,
-  },
-};
-
 export const fetchRejectOfferInfo = (id) => async (dispatch) => {
   dispatch(fetchRejectOfferStart());
   return axios
     .post(
       `https://bootcampapi.techcs.io/api/fe/v1/account/reject-offer/${id}`,
       null,
-      config
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access-token')}`,
+        },
+      }
     )
     .then((response) => {
       dispatch(fetchRejectOfferSuccess(response.data));
       toast.success('Teklif Reddedildi', {
         position: 'top-right',
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
@@ -52,7 +50,7 @@ export const fetchRejectOfferInfo = (id) => async (dispatch) => {
       if (err.response.status === 401) {
         toast.error('Kullanıcı sisteme giriş yapmalı', {
           position: 'top-right',
-          autoClose: 5000,
+          autoClose: 3000,
           hideProgressBar: true,
           closeOnClick: true,
           pauseOnHover: true,
@@ -64,7 +62,7 @@ export const fetchRejectOfferInfo = (id) => async (dispatch) => {
       } else {
         toast.error('Ürün bulunamadı', {
           position: 'top-right',
-          autoClose: 5000,
+          autoClose: 3000,
           hideProgressBar: true,
           closeOnClick: true,
           pauseOnHover: true,

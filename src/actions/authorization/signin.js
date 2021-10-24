@@ -17,6 +17,10 @@ export const fetchSigninError = (err) => ({
   payload: err,
 });
 
+export const signinLogout = () => ({
+  type: AUTH_TYPES.SIGNIN_LOG_OUT,
+});
+
 export const fetchSigninInfo = (user) => async (dispatch) => {
   dispatch(fetchSigninStart());
   return request
@@ -25,7 +29,7 @@ export const fetchSigninInfo = (user) => async (dispatch) => {
       dispatch(fetchSigninSuccess(response.data));
       toast.success('Girş başarılı.', {
         position: 'top-right',
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
@@ -42,7 +46,7 @@ export const fetchSigninInfo = (user) => async (dispatch) => {
       dispatch(fetchSigninError(err));
       toast.error('Emailiniz veya şifreniz hatalı.', {
         position: 'top-right',
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,

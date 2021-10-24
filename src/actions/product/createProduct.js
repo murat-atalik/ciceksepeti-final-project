@@ -8,13 +8,18 @@ export const fetchCreateProductStart = () => ({
   type: PRODUCT_TYPES.FETCH_CREATEPRODUCT_START,
 });
 
-export const fetchCreateProductSuccess = () => ({
+export const fetchCreateProductSuccess = (data) => ({
   type: PRODUCT_TYPES.FETCH_CREATEPRODUCT_SUCCESS,
+  payload: data,
 });
 
 export const fetchCreateProductError = (err) => ({
   type: PRODUCT_TYPES.FETCH_CREATEPRODUCT_ERROR,
   payload: err,
+});
+
+export const redirectProduct = () => ({
+  type: PRODUCT_TYPES.REDIRECT_PRODUCT,
 });
 
 export const fetchCreateProductInfo = (value) => async (dispatch) => {
@@ -29,7 +34,7 @@ export const fetchCreateProductInfo = (value) => async (dispatch) => {
       dispatch(fetchCreateProductSuccess(response.data));
       toast.success('Ürün ekleme başarılı', {
         position: 'top-right',
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
@@ -43,7 +48,7 @@ export const fetchCreateProductInfo = (value) => async (dispatch) => {
       dispatch(fetchCreateProductError(err));
       toast.error('Kullanıcı sisteme giriş yapmalı', {
         position: 'top-right',
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,

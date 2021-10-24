@@ -85,9 +85,9 @@
   .product-grid-container {
     margin-top: 20px;
     display: grid;
-    justify-content: space-between;
-    justify-items: stretch;
-    grid-template-columns: repeat(auto-fit, minmax(173px, get-vw(280px)));
+    grid-template-columns: repeat(auto-fit, minmax(173px, 260px));
+    justify-content: center;
+    gap: 15px;
   }
 }
 

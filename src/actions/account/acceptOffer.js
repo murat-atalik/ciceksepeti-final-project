@@ -19,23 +19,22 @@ export const fetchAcceptOfferError = (err) => ({
 });
 
 export const fetchAcceptOfferInfo = (id) => async (dispatch) => {
-  const config = {
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem('access-token')}`,
-    },
-  };
   dispatch(fetchAcceptOfferStart());
   return axios
     .put(
       `https://bootcampapi.techcs.io/api/fe/v1/account/accept-offer/${id}`,
       null,
-      config
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access-token')}`,
+        },
+      }
     )
     .then(() => {
       dispatch(fetchAcceptOfferSuccess());
       toast.success('Teklif Onaylandı', {
         position: 'top-right',
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
@@ -50,7 +49,7 @@ export const fetchAcceptOfferInfo = (id) => async (dispatch) => {
       if (err.response.status === 401) {
         toast.error('Kullanıcı sisteme giriş yapmalı', {
           position: 'top-right',
-          autoClose: 5000,
+          autoClose: 3000,
           hideProgressBar: true,
           closeOnClick: true,
           pauseOnHover: true,
@@ -62,7 +61,7 @@ export const fetchAcceptOfferInfo = (id) => async (dispatch) => {
       } else {
         toast.error('Ürün bulunamadı', {
           position: 'top-right',
-          autoClose: 5000,
+          autoClose: 3000,
           hideProgressBar: true,
           closeOnClick: true,
           pauseOnHover: true,

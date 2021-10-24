@@ -1,0 +1,47 @@
+@import '../../style/variables';
+
+.loading {
+  width: 100vw;
+  height: 100vh;
+  background-color: $white-300;
+  .loading-body {
+    width: 10rem;
+    height: 10rem;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .loading-inner {
+    width: 100%;
+    height: 100%;
+    border: 1rem solid $input-border;
+    border-radius: 50%;
+    border-top-color: #4b9ce210;
+    border-bottom-color: #4b9ce210;
+    animation: rotate 5s linear infinite;
+  }
+  .loading-inner-2 {
+    width: 100%;
+    height: 100%;
+    border: 1rem solid $input-border;
+    border-radius: 50%;
+    border-right-color: #4b9ce210;
+    border-left-color: #4b9ce210;
+    animation: rotate 5s linear infinite;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: scale(1) rotate(360deg);
+  }
+
+  50% {
+    transform: scale(0.5) rotate(-360deg);
+  }
+
+  100% {
+    transform: scale(1) rotate(360deg);
+  }
+}

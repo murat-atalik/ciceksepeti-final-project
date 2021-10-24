@@ -64,7 +64,6 @@
   border-radius: 8px;
   padding: 8px;
   width: get-vw(1413px);
-  min-width: 335px;
 
   min-height: 104px;
   margin: 20px auto 0 auto;
@@ -151,7 +150,7 @@
 @media only screen and (max-width: 575px) {
   .account-detail-card {
     margin-top: 10px !important;
-    width: 335px;
+    width: 335px !important;
     height: 134px;
   }
 
@@ -176,16 +175,41 @@
     margin-right: 10px !important;
   }
   .account-main-container {
-    width: auto;
+    width: auto !important;
+
     margin-left: 10px !important;
     margin-right: 10px !important;
   }
   .account-detail-card {
-    width: auto;
     margin-left: 10px !important;
     margin-right: 10px !important;
     &-detail {
       margin-left: 10px;
+    }
+  }
+  .account-detail-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media only screen and (max-width: 374px) {
+  .account-email-container {
+    width: auto;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .account-main-container {
+    width: auto;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .account-detail-card {
+    width: auto;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    &-detail {
+      margin-left: auto;
     }
   }
 }

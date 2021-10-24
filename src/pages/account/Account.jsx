@@ -50,6 +50,9 @@ function Account() {
   const toggle = () => setToggleOffer(!toggleOffer);
 
   useEffect(() => {
+    /* Her account sayfasina gidildiginde data cekilmezse
+     kullanicinin almis yada vermis oldugu teklifler sayfa yenilenene kadar ayni kalir 
+     bu yuzden bu kisim sayfa her acildiginda yenileniyor */
     dispatch(fetchGivenOffersInfo());
     dispatch(fetchRecievedOffersInfo());
   }, [dispatch]);
@@ -187,10 +190,15 @@ function Account() {
                         Satın Al
                       </Button>
                     )}
-                    {(item.status === 'rejected' ||
-                      (item.status === 'offered' && item.product.isSold)) && (
+                    {item.status === 'rejected' && !item.product.isSold && (
                       <p className="account-button-container-rejected">
                         Reddedildi
+                      </p>
+                    )}
+                    {((item.status === 'offered' && item.product.isSold) ||
+                      (item.status === 'rejected' && item.product.isSold)) && (
+                      <p className="account-button-container-rejected">
+                        Satıldı
                       </p>
                     )}
                     {item.status === 'accepted' && !item.product.isSold && (

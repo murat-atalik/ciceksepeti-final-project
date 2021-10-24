@@ -1,8 +1,12 @@
 import './header.scss';
 
+import { signinLogout } from 'actions/authorization/signin';
+import { signupLogout } from 'actions/authorization/signup';
 import Button from 'components/Button/Button';
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Link, useHistory, useLocation } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import user from '../../assests/Group3045.svg';
 import logo from '../../assests/Group6607.svg';
@@ -10,10 +14,29 @@ import add from '../../assests/Group6861.svg';
 
 function Header() {
   const history = useHistory();
+  const location = useLocation();
+  const dispatch = useDispatch();
   const goAccount = () => history.push('/account');
   const goSignin = () => history.push('/signin');
   const goAddProduct = () => history.push('/add-product');
 
+  const logout = () => {
+    localStorage.clear();
+    dispatch(signinLogout());
+    dispatch(signupLogout());
+    history.push('/');
+    toast.success('Çıkış başarılı.', {
+      position: 'top-right',
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'colored',
+      closeButton: false,
+    });
+  };
   return (
     <>
       <div className="header">
@@ -31,7 +54,7 @@ function Header() {
               <span>Ürün Ekle</span>
             </Button>
           )}
-          {localStorage.getItem('email') ? (
+          {localStorage.getItem('email') && location.pathname !== '/account' && (
             <Button
               className="header-account-button"
               theme="secondary"
@@ -40,7 +63,19 @@ function Header() {
               <img src={user} alt="Hesabım" className="header-account-img" />
               <span>Hesabım</span>
             </Button>
-          ) : (
+          )}
+          {localStorage.getItem('email') && location.pathname === '/account' && (
+            <Button
+              className="header-account-button"
+              theme="secondary"
+              onClick={logout}
+            >
+              <img src={user} alt="Hesabım" className="header-account-img" />
+              <span>Çıkış Yap</span>
+            </Button>
+          )}
+
+          {!localStorage.getItem('email') && (
             <Button
               className="header-account-button"
               theme="secondary"
