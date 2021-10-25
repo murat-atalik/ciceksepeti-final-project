@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
-import GeneralLoading from './components/Loading/GeneralLoading';
+import GeneralLoading from './components/Loading/Loading';
 import RouterController from './Routes/RouteController';
 
 const Products = lazy(() => import('./pages/Products/Products'));
@@ -22,9 +22,6 @@ function App() {
     localStorage.getItem('isSignedin') === 'true'
   );
   useEffect(() => {
-    console.log(`!signup.isSignedIn`, !signup.isSignedIn);
-    console.log(`!signup.isSignedIn`, !signup.isSignedIn);
-    console.log(`locasl`, localStorage.getItem('isSignedin'));
     if (
       localStorage.getItem('isSignedin') !== 'true' &&
       !signin.isSignedIn &&

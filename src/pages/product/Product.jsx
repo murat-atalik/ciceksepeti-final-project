@@ -1,9 +1,5 @@
 import './product.scss';
 
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
-
 import { fetchCancelOfferInfo } from 'actions/account/cancelOffer';
 import { fetchGivenOffersInfo } from 'actions/account/givenOffers';
 import { fetchGetProductInfo } from 'actions/product/getProduct';
@@ -14,6 +10,9 @@ import Header from 'components/Header/Header';
 import Loading from 'components/Loading/Loading';
 import ConfirmationModal from 'components/Modal/ConfirmationModal';
 import OfferModal from 'components/Modal/OfferModal';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useParams } from 'react-router-dom';
 
 function Product() {
   const { id } = useParams();
@@ -81,7 +80,6 @@ function Product() {
       dispatch(fetchGivenOffersInfo());
     }
   }, [dispatch, getProduct, givenOffers, id]);
-
   if (getProduct.isFetching || givenOffers.isFetching) {
     return <Loading />;
   }

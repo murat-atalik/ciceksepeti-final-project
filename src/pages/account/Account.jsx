@@ -1,9 +1,5 @@
 import './account.scss';
 
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-
 import { fetchAcceptOfferInfo } from 'actions/account/acceptOffer';
 import { fetchGivenOffersInfo } from 'actions/account/givenOffers';
 import { fetchRecievedOffersInfo } from 'actions/account/receivedOffers';
@@ -14,6 +10,9 @@ import Button from 'components/Button/Button';
 import Header from 'components/Header/Header';
 import Loading from 'components/Loading/Loading';
 import ConfirmationModal from 'components/Modal/ConfirmationModal';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 function Account() {
   const receivedOffers = useSelector((state) => state.receivedOffers);
@@ -61,6 +60,7 @@ function Account() {
   if (receivedOffers.isFetching || givenOffers.isFetching) {
     <Loading />;
   }
+
   return (
     <>
       <Header />
