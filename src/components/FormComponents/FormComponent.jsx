@@ -9,12 +9,12 @@ import { Link, useHistory } from 'react-router-dom';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
 
-function FormComponent({ type, fetch, isSignedIn, isFetching }) {
+function FormComponent({ type, fetch, selector }) {
   const [values, setValues] = useState({ email: '', password: '' });
   const dispatch = useDispatch();
   const history = useHistory();
   const validateForm = (value) => {
-    if (!isSignedIn && !isFetching) {
+    if (!selector.isSignedIn && !selector.isFetching) {
       dispatch(fetch(value));
     }
   };
@@ -25,10 +25,10 @@ function FormComponent({ type, fetch, isSignedIn, isFetching }) {
   );
 
   useEffect(() => {
-    if (isSignedIn) {
+    if (selector.isSignedIn) {
       history.push('/');
     }
-  }, [history, isSignedIn]);
+  }, [history, selector.isSignedIn]);
 
   return (
     <>
@@ -82,6 +82,9 @@ function FormComponent({ type, fetch, isSignedIn, isFetching }) {
           />
           {errors.passwordErr && (
             <p className="form-error">{errors.passwordMsg}</p>
+          )}
+          {type === 'signin' && selector.isError.length !== 0 && (
+            <p className="signin-forgot-password">Şifremi Unuttum</p>
           )}
         </div>
         <Button type="submit" theme="primary" className="custom-btn">

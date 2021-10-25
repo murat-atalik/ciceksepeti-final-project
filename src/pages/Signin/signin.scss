@@ -138,6 +138,14 @@
     font: normal normal normal 12px/20px Nunito;
     bottom: -4px;
   }
+  .signin-forgot-password {
+    color: $grey-100;
+    position: absolute;
+    font: normal normal normal 12px/20px Nunito;
+    bottom: -4px;
+    text-align: end;
+    cursor: pointer;
+  }
 }
 @media only screen and (max-width: 900px) {
   .signin {

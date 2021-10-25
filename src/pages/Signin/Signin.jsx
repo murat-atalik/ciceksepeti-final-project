@@ -18,8 +18,7 @@ function Signin() {
         <FormComponent
           type="signin"
           fetch={fetchSigninInfo}
-          isSignedIn={signin.isSignedIn}
-          isFetching={signin.isFetching}
+          selector={signin}
         />
       </div>
     </div>

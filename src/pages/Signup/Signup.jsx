@@ -18,8 +18,7 @@ function Signup() {
         <FormComponent
           type="signup"
           fetch={fetchSignupInfo}
-          isSignedIn={signup.isSignedIn}
-          isFetching={signup.isFetching}
+          selector={signup}
         />
       </div>
     </div>
