@@ -1,5 +1,5 @@
 import 'react-toastify/dist/ReactToastify.css';
-import 'style/index.scss';
+import './style/index.scss';
 
 import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
