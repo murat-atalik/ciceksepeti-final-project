@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
-import GeneralLoading from './components/Loading/Loading';
+import GeneralLoading from './components/Loading/GeneralLoading';
 import RouterController from './Routes/RouteController';
 
 const Products = lazy(() => import('./pages/Products/Products'));

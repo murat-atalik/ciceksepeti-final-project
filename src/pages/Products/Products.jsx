@@ -43,6 +43,9 @@ function Products() {
   const goProduct = (value) => {
     history.push(`/product/${value}`);
   };
+  if (products.isFetching) {
+    return <Loading />;
+  }
 
   return (
     <>
