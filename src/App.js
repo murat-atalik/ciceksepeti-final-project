@@ -9,12 +9,12 @@ import { ToastContainer } from 'react-toastify';
 import GeneralLoading from './components/Loading/GeneralLoading';
 import RouterController from './Routes/RouteController';
 
-const Products = lazy(() => import('pages/Products/Products'));
-const Product = lazy(() => import('pages/Product/Product'));
-const AddProduct = lazy(() => import('pages/AddProduct/AddProduct'));
-const Account = lazy(() => import('pages/Account/Account'));
-const Signup = lazy(() => import('pages/Signup/Signup'));
-const Signin = lazy(() => import('pages/Signin/Signin'));
+const Products = lazy(() => import('./pages/Products/Products'));
+const Product = lazy(() => import('./pages/Product/Product'));
+const AddProduct = lazy(() => import('./pages/AddProduct/AddProduct'));
+const Account = lazy(() => import('./pages/Account/Account'));
+const Signup = lazy(() => import('./pages/Signup/Signup'));
+const Signin = lazy(() => import('./pages/Signin/Signin'));
 function App() {
   const signin = useSelector((state) => state.signin);
   const signup = useSelector((state) => state.signup);
