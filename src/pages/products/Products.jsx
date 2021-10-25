@@ -5,6 +5,7 @@ import { fetchAllCategoriesInfo } from 'actions/category/getAllCategories';
 import { fetchAllProductsInfo } from 'actions/product/getAllProducts';
 import Card from 'components/Card/Card';
 import Header from 'components/Header/Header';
+import Loading from 'components/Loading/Loading';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
@@ -44,9 +45,13 @@ function Products() {
     history.push(`/product/${value}`);
   };
 
+  if (products.isFetching) {
+    return <Loading />;
+  }
   return (
     <>
       <Header />
+
       <div className="body">
         <div className="products-body">
           <img className="banner-img" src={banner} alt="banner" />

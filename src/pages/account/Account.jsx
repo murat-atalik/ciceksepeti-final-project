@@ -7,6 +7,7 @@ import { fetchRejectOfferInfo } from 'actions/account/rejectOffer';
 import { fetchPurchaseProductInfo } from 'actions/product/purchaseProduct';
 import Button from 'components/Button/Button';
 import Header from 'components/Header/Header';
+import Loading from 'components/Loading/Loading';
 import ConfirmationModal from 'components/Modal/ConfirmationModal';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -57,6 +58,9 @@ function Account() {
     dispatch(fetchRecievedOffersInfo());
   }, [dispatch]);
 
+  if (receivedOffers.isFetching || givenOffers.isFetching) {
+    return <Loading />;
+  }
   return (
     <>
       <Header />

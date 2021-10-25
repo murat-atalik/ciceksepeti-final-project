@@ -1,12 +1,10 @@
 import './loading.scss';
 
-import Header from 'components/Header/Header';
 import React from 'react';
 
-function Loading() {
+function GeneralLoading() {
   return (
     <>
-      <Header />
       <div className="loading">
         <div className="loading-body">
           <div className="loading-inner">
@@ -18,4 +16,4 @@ function Loading() {
   );
 }
 
-export default Loading;
+export default GeneralLoading;

@@ -7,6 +7,7 @@ import { fetchOfferProductInfo } from 'actions/product/offerProduct';
 import { fetchPurchaseProductInfo } from 'actions/product/purchaseProduct';
 import Button from 'components/Button/Button';
 import Header from 'components/Header/Header';
+import Loading from 'components/Loading/Loading';
 import ConfirmationModal from 'components/Modal/ConfirmationModal';
 import OfferModal from 'components/Modal/OfferModal';
 import React, { useEffect, useState } from 'react';
@@ -80,6 +81,9 @@ function Product() {
     }
   }, [dispatch, getProduct, givenOffers, id]);
 
+  if (getProduct.isFetching || givenOffers.isFetching) {
+    return <Loading />;
+  }
   return (
     <>
       <Header />

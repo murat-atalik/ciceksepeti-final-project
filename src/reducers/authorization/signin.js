@@ -4,7 +4,7 @@ const initialState = {
   postData: {},
   isFetching: false,
   isError: '',
-  isSignedIn: false,
+  isSignedIn: localStorage.getItem('isSignedin') === 'true',
 };
 
 const signin = (state = initialState, action) => {
@@ -22,7 +22,12 @@ const signin = (state = initialState, action) => {
     case AUTH_TYPES.FETCH_SIGNIN_ERROR:
       return { ...state, isError: action.payload, isFetching: false };
     case AUTH_TYPES.SIGNIN_LOG_OUT:
-      return { ...initialState };
+      return {
+        postData: {},
+        isFetching: false,
+        isError: '',
+        isSignedIn: false,
+      };
     default:
       return state;
   }
