@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import FILE_TYPES from '../../action-types/file';
+import FILE_TYPES from 'action-types/file';
 
 export const fetchUploadImageStart = () => ({
   type: FILE_TYPES.FETCH_UPLOADIMAGE_START,

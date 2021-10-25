@@ -1,5 +1,5 @@
-import BRAND_TYPES from '../../action-types/brand';
-import request from '../../agent/request';
+import BRAND_TYPES from 'action-types/brand';
+import request from 'agent/request';
 
 export const fetchAllBrandsStart = () => ({
   type: BRAND_TYPES.FETCH_ALLBRANDS_START,

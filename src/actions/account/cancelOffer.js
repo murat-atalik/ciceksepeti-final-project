@@ -1,7 +1,7 @@
 import { toast } from 'react-toastify';
 
-import ACCOUNT_TYPES from '../../action-types/account';
-import request from '../../agent/request';
+import ACCOUNT_TYPES from 'action-types/account';
+import request from 'agent/request';
 import { fetchGivenOffersInfo } from './givenOffers';
 
 export const fetchCancelOfferStart = () => ({

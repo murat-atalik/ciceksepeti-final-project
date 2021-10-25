@@ -1,5 +1,5 @@
-import ACCOUNT_TYPES from '../../action-types/account';
-import request from '../../agent/request';
+import ACCOUNT_TYPES from 'action-types/account';
+import request from 'agent/request';
 
 export const fetchRecievedOffersStart = () => ({
   type: ACCOUNT_TYPES.FETCH_RECEIVEDOFFERS_START,

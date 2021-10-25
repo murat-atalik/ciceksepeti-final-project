@@ -1,4 +1,4 @@
-import CATEGORY_TYPES from '../../action-types/category';
+import CATEGORY_TYPES from 'action-types/category';
 
 const initialState = {
   allCategories: [],

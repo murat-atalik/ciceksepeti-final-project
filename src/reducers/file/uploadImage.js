@@ -1,4 +1,4 @@
-import FILE_TYPES from '../../action-types/file';
+import FILE_TYPES from 'action-types/file';
 
 const initialState = {
   file: '',

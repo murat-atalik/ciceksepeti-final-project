@@ -5,23 +5,23 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import { fetchAllBrandsInfo } from '../../actions/brand/getAllBrands';
-import { fetchAllCategoriesInfo } from '../../actions/category/getAllCategories';
-import { fetchAllColorsInfo } from '../../actions/color/allColors';
+import { fetchAllBrandsInfo } from 'actions/brand/getAllBrands';
+import { fetchAllCategoriesInfo } from 'actions/category/getAllCategories';
+import { fetchAllColorsInfo } from 'actions/color/allColors';
 import {
   fetchCreateProductInfo,
   redirectProduct,
-} from '../../actions/product/createProduct';
-import { fetchAllStatusesInfo } from '../../actions/status/allStatus';
-import Button from '../../components/Button/Button';
-import Header from '../../components/Header/Header';
-import Input from '../../components/Input/Input';
-import ListBox from '../../components/ListBox/ListBox';
-import TextArea from '../../components/Textarea/TextArea';
-import ToggleSwitch from '../../components/ToggleSwitch/ToggleSwitch';
-import UploadImage from '../../components/UploadImage/UploadImage';
-import validation from '../../helpers/addProductValidation';
-import useValidation from '../../hooks/useValidation';
+} from 'actions/product/createProduct';
+import { fetchAllStatusesInfo } from 'actions/status/allStatus';
+import Button from 'components/Button/Button';
+import Header from 'components/Header/Header';
+import Input from 'components/Input/Input';
+import ListBox from 'components/ListBox/ListBox';
+import TextArea from 'components/Textarea/TextArea';
+import ToggleSwitch from 'components/ToggleSwitch/ToggleSwitch';
+import UploadImage from 'components/UploadImage/UploadImage';
+import validation from 'helpers/addProductValidation';
+import useValidation from 'hooks/useValidation';
 
 const defaultToggle = {
   colors: false,

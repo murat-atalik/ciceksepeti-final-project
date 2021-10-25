@@ -1,4 +1,4 @@
-import COLOR_TYPES from '../../action-types/color';
+import COLOR_TYPES from 'action-types/color';
 
 const initialState = {
   allColors: [],

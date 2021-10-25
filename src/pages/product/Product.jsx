@@ -4,16 +4,16 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
-import { fetchCancelOfferInfo } from '../../actions/account/cancelOffer';
-import { fetchGivenOffersInfo } from '../../actions/account/givenOffers';
-import { fetchGetProductInfo } from '../../actions/product/getProduct';
-import { fetchOfferProductInfo } from '../../actions/product/offerProduct';
-import { fetchPurchaseProductInfo } from '../../actions/product/purchaseProduct';
-import Button from '../../components/Button/Button';
-import Header from '../../components/Header/Header';
-import Loading from '../../components/Loading/Loading';
-import ConfirmationModal from '../../components/Modal/ConfirmationModal';
-import OfferModal from '../../components/Modal/OfferModal';
+import { fetchCancelOfferInfo } from 'actions/account/cancelOffer';
+import { fetchGivenOffersInfo } from 'actions/account/givenOffers';
+import { fetchGetProductInfo } from 'actions/product/getProduct';
+import { fetchOfferProductInfo } from 'actions/product/offerProduct';
+import { fetchPurchaseProductInfo } from 'actions/product/purchaseProduct';
+import Button from 'components/Button/Button';
+import Header from 'components/Header/Header';
+import Loading from 'components/Loading/Loading';
+import ConfirmationModal from 'components/Modal/ConfirmationModal';
+import OfferModal from 'components/Modal/OfferModal';
 
 function Product() {
   const { id } = useParams();

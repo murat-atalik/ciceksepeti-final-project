@@ -1,4 +1,4 @@
-import BRAND_TYPES from '../../action-types/brand';
+import BRAND_TYPES from 'action-types/brand';
 
 const initialState = {
   allBrands: [],

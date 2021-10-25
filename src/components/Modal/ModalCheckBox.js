@@ -1,7 +1,7 @@
 import React from 'react';
 
-import checkedOutline from '../../assests/Ellipse1304-Outline.svg';
-import checked from '../../assests/Group6909.svg';
+import checkedOutline from 'assests/Ellipse1304-Outline.svg';
+import checked from 'assests/Group6909.svg';
 
 const ModalCheckBox = ({ label, value, callback, className }) => (
   <div

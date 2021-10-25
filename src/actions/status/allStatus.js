@@ -1,5 +1,5 @@
-import STATUS_TYPES from '../../action-types/status';
-import request from '../../agent/request';
+import STATUS_TYPES from 'action-types/status';
+import request from 'agent/request';
 
 export const fetchAllStatusStart = () => ({
   type: STATUS_TYPES.FETCH_ALLSTATUS_START,

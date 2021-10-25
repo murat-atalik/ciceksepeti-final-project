@@ -1,4 +1,4 @@
-import STATUS_TYPES from '../../action-types/status';
+import STATUS_TYPES from 'action-types/status';
 
 const initialState = {
   allStatus: [],

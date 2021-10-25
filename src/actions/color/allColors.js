@@ -1,5 +1,5 @@
-import COLOR_TYPES from '../../action-types/color';
-import request from '../../agent/request';
+import COLOR_TYPES from 'action-types/color';
+import request from 'agent/request';
 
 export const fetchAllColorsStart = () => ({
   type: COLOR_TYPES.FETCH_ALLCOLORS_START,

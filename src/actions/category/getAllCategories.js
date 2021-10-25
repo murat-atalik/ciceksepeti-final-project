@@ -1,5 +1,5 @@
-import CATEGORY_TYPES from '../../action-types/category';
-import request from '../../agent/request';
+import CATEGORY_TYPES from 'action-types/category';
+import request from 'agent/request';
 
 export const fetchAllCategoriesStart = () => ({
   type: CATEGORY_TYPES.FETCH_ALLCATEGORIES_START,

@@ -1,7 +1,7 @@
 import { toast } from 'react-toastify';
 
-import PRODUCT_TYPES from '../../action-types/product';
-import request from '../../agent/request';
+import PRODUCT_TYPES from 'action-types/product';
+import request from 'agent/request';
 import { fetchAllProductsInfo } from './getAllProducts';
 
 export const fetchCreateProductStart = () => ({

@@ -1,7 +1,7 @@
 import './listBox.scss';
 
-import arrow from '../../assests/Path14450.svg';
-import warnArrow from '../../assests/Path14450-warn.svg';
+import arrow from 'assests/Path14450.svg';
+import warnArrow from 'assests/Path14450-warn.svg';
 
 function ListBox({
   list,

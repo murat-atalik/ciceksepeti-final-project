@@ -1,4 +1,4 @@
-import ACCOUNT_TYPES from '../../action-types/account';
+import ACCOUNT_TYPES from 'action-types/account';
 
 const initialState = {
   isFetching: false,

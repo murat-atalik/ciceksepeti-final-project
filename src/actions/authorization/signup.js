@@ -1,7 +1,7 @@
 import { toast } from 'react-toastify';
 
-import AUTH_TYPES from '../../action-types/authorization';
-import request from '../../agent/request';
+import AUTH_TYPES from 'action-types/authorization';
+import request from 'agent/request';
 
 export const fetchSignupStart = () => ({
   type: AUTH_TYPES.FETCH_SIGNUP_START,

@@ -1,5 +1,5 @@
-import PRODUCT_TYPES from '../../action-types/product';
-import request from '../../agent/request';
+import PRODUCT_TYPES from 'action-types/product';
+import request from 'agent/request';
 
 export const fetchGetProductStart = () => ({
   type: PRODUCT_TYPES.FETCH_GETPRODUCT_START,

@@ -1,4 +1,4 @@
-import PRODUCT_TYPES from '../../action-types/product';
+import PRODUCT_TYPES from 'action-types/product';
 
 const initialState = {
   product: {},

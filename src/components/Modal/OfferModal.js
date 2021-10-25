@@ -2,9 +2,9 @@ import './offerModal.scss';
 
 import React, { useState } from 'react';
 
-import Close from '../../assests/Group6618.svg';
-import offerHelper from '../../helpers/offerHelper';
-import useValidation from '../../hooks/useValidation';
+import Close from 'assests/Group6618.svg';
+import offerHelper from 'helpers/offerHelper';
+import useValidation from 'hooks/useValidation';
 import CustomButton from '../Button/CustomButton';
 import Input from '../Input/Input';
 import ModalCheckBox from './ModalCheckBox';

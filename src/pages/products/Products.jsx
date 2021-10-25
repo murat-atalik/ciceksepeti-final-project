@@ -5,12 +5,12 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 
-import { fetchAllCategoriesInfo } from '../../actions/category/getAllCategories';
-import { fetchAllProductsInfo } from '../../actions/product/getAllProducts';
-import banner from '../../assests/Banner1.png';
-import Card from '../../components/Card/Card';
-import Header from '../../components/Header/Header';
-import Loading from '../../components/Loading/Loading';
+import { fetchAllCategoriesInfo } from 'actions/category/getAllCategories';
+import { fetchAllProductsInfo } from 'actions/product/getAllProducts';
+import banner from 'assests/Banner1.png';
+import Card from 'components/Card/Card';
+import Header from 'components/Header/Header';
+import Loading from 'components/Loading/Loading';
 
 function Products() {
   const history = useHistory();

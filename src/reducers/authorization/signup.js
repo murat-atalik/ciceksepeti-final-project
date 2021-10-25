@@ -1,4 +1,4 @@
-import AUTH_TYPES from '../../action-types/authorization';
+import AUTH_TYPES from 'action-types/authorization';
 
 const initialState = {
   postData: {},
