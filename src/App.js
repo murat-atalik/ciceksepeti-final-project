@@ -1,19 +1,20 @@
 import 'react-toastify/dist/ReactToastify.css';
 import 'style/index.scss';
 
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 import GeneralLoading from './components/Loading/GeneralLoading';
 import RouterController from './Routes/RouteController';
-import {
-  authenticationRoutes,
-  protectedRoutes,
-  publicRoutes,
-} from './Routes/routes';
 
+const Products = lazy(() => import('pages/Products/Products'));
+const Product = lazy(() => import('pages/Product/Product'));
+const AddProduct = lazy(() => import('pages/AddProduct/AddProduct'));
+const Account = lazy(() => import('pages/Account/Account'));
+const Signup = lazy(() => import('pages/Signup/Signup'));
+const Signin = lazy(() => import('pages/Signin/Signin'));
 function App() {
   const signin = useSelector((state) => state.signin);
   const signup = useSelector((state) => state.signup);
@@ -46,36 +47,48 @@ function App() {
     <Router>
       <Suspense fallback={<GeneralLoading />}>
         <Switch>
-          {protectedRoutes.map(({ path, component, ...rest }) => (
-            <RouterController
-              key={component}
-              routeType="protected"
-              component={component}
-              isAuth={loggedIn}
-              path={path}
-              rest={rest}
-            />
-          ))}
-          {authenticationRoutes.map(({ path, component, ...rest }) => (
-            <RouterController
-              key={component}
-              routeType="auth"
-              component={component}
-              isAuth={loggedIn}
-              path={path}
-              rest={rest}
-            />
-          ))}
-          {publicRoutes.map(({ path, component, ...rest }) => (
-            <RouterController
-              key={component}
-              routeType="public"
-              component={component}
-              isAuth={loggedIn}
-              path={path}
-              rest={rest}
-            />
-          ))}
+          <RouterController
+            routeType="protected"
+            component={AddProduct}
+            isAuth={loggedIn}
+            path="/add-product"
+            exact={false}
+          />
+          <RouterController
+            routeType="protected"
+            component={Account}
+            isAuth={loggedIn}
+            path="/account"
+            exact={false}
+          />
+          <RouterController
+            routeType="auth"
+            component={Signup}
+            isAuth={loggedIn}
+            path="/signup"
+            exact={false}
+          />
+          <RouterController
+            routeType="auth"
+            component={Signin}
+            isAuth={loggedIn}
+            path="/signin"
+            exact={false}
+          />
+          <RouterController
+            routeType="public"
+            component={Product}
+            isAuth={loggedIn}
+            path="/product/:id"
+            exact={false}
+          />
+          <RouterController
+            routeType="public"
+            component={Products}
+            isAuth={loggedIn}
+            path="/"
+            exact
+          />
         </Switch>
       </Suspense>
       <ToastContainer
