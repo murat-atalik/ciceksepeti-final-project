@@ -1,12 +1,15 @@
 import './uploadImage.scss';
 
-import { fetchUploadImageInfo, removeImage } from 'actions/file/imageUpload';
-import ProgressBar from 'components/ProgressBar/ProgressBar';
 import React, { useEffect, useMemo, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { useDispatch, useSelector } from 'react-redux';
 
+import {
+  fetchUploadImageInfo,
+  removeImage,
+} from '../../actions/file/imageUpload';
 import uploadIcon from '../../assests/Group6911.svg';
+import ProgressBar from '../ProgressBar/ProgressBar';
 
 const baseStyle = {
   height: '100%',

@@ -1,7 +1,8 @@
 import './confirmationModal.scss';
 
-import CustomButton from 'components/Button/CustomButton';
 import React from 'react';
+
+import CustomButton from '../Button/CustomButton';
 
 function ConfirmationModal({
   title,

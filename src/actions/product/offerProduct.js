@@ -1,8 +1,8 @@
-import { fetchGivenOffersInfo } from 'actions/account/givenOffers';
 import { toast } from 'react-toastify';
 
 import PRODUCT_TYPES from '../../action-types/product';
 import request from '../../agent/request';
+import { fetchGivenOffersInfo } from '../account/givenOffers';
 
 export const fetchOfferProductStart = () => ({
   type: PRODUCT_TYPES.FETCH_OFFERPRODUCT_START,

@@ -1,16 +1,16 @@
 import './header.scss';
 
-import { signinLogout } from 'actions/authorization/signin';
-import { signupLogout } from 'actions/authorization/signup';
-import Button from 'components/Button/Button';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
+import { signinLogout } from '../../actions/authorization/signin';
+import { signupLogout } from '../../actions/authorization/signup';
 import user from '../../assests/Group3045.svg';
 import logo from '../../assests/Group6607.svg';
 import add from '../../assests/Group6861.svg';
+import Button from '../Button/Button';
 
 function Header() {
   const history = useHistory();

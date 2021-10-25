@@ -1,12 +1,12 @@
 import 'react-toastify/dist/ReactToastify.css';
 import './style/index.scss';
 
-import GeneralLoading from 'components/Loading/GeneralLoading';
 import React, { Suspense, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
+import GeneralLoading from './components/Loading/GeneralLoading';
 import RouterController from './Routes/RouteController';
 import {
   authenticationRoutes,
