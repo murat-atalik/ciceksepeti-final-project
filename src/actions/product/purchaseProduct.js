@@ -1,7 +1,7 @@
+import PRODUCT_TYPES from 'action-types/product';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-import PRODUCT_TYPES from 'action-types/product';
 import { fetchGivenOffersInfo } from '../account/givenOffers';
 import { fetchGetProductInfo } from './getProduct';
 

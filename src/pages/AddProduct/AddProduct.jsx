@@ -1,10 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import './addProduct.scss';
 
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-
 import { fetchAllBrandsInfo } from 'actions/brand/getAllBrands';
 import { fetchAllCategoriesInfo } from 'actions/category/getAllCategories';
 import { fetchAllColorsInfo } from 'actions/color/allColors';
@@ -22,6 +18,9 @@ import ToggleSwitch from 'components/ToggleSwitch/ToggleSwitch';
 import UploadImage from 'components/UploadImage/UploadImage';
 import validation from 'helpers/addProductValidation';
 import useValidation from 'hooks/useValidation';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 const defaultToggle = {
   colors: false,

@@ -1,7 +1,7 @@
+import ACCOUNT_TYPES from 'action-types/account';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-import ACCOUNT_TYPES from 'action-types/account';
 import { fetchGivenOffersInfo } from './givenOffers';
 import { fetchRecievedOffersInfo } from './receivedOffers';
 
