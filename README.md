@@ -1,7 +1,7 @@
 # ÇiçekSepeti React Bootcamp Final Project
 
-This project is prepared for Çiçek Sepeti React Bootcamp.
-You can sign up and log in with your e-mail address. After logging into the page, you can bid on the product you want, buy it, or offer your own product for sale.
+This project is prepared for Çiçek Sepeti React Bootcamp. 
+You can sign up and log in with your e-mail address. After logging into the page, you can bid on the product, buy it, or offer your own product for sale.
 
 Click demo to try it by yourself!
 
