@@ -25,7 +25,7 @@ function Products() {
   const [currentPage, setCurrentPage] = useState(1);
   const postPerPage = 20;
   const [maxPage, setMaxPage] = useState(0);
-  console.log('pageQuerry :>> ', pageQuerry);
+
   useEffect(() => {
     if (categories.allCategories.length === 0 && !categories.isFetching) {
       dispatch(fetchAllCategoriesInfo());
@@ -40,9 +40,6 @@ function Products() {
       products.products.filter((item) => item.category.title === categoryQuery)
         .length / postPerPage
     );
-    if (pageQuerry) {
-      setCurrentPage(Number(pageQuerry) !== 0 ? Number(pageQuerry) : 1);
-    }
     if (categoryQuery) {
       setFilteredData(
         products.products.filter(
@@ -61,6 +58,10 @@ function Products() {
     }
   }, [categoryQuery, filteredData.length, maxPage, pageQuerry, products]);
 
+  useEffect(() => {
+    setCurrentPage(Number(pageQuerry) !== 0 ? Number(pageQuerry) : 1);
+  }, [pageQuerry]);
+
   const goProduct = (value) => {
     history.push(`/product/${value}`);
   };
@@ -70,7 +71,6 @@ function Products() {
   const indexOfLast = currentPage * postPerPage;
   const indexOfFirst = indexOfLast - postPerPage;
   const currentPost = filteredData.slice(indexOfFirst, indexOfLast);
-  console.log('currentPage :>> ', currentPage);
   return (
     <>
       <Header />
