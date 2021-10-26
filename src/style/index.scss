@@ -47,11 +47,5 @@ body {
   .Toastify__toast {
     border-radius: 8px !important;
     width: calc(100vw - 20px) !important;
-    position: fixed !important;
-    margin-top: 0px !important;
-    top: 0px !important;
-    left: 50% !important;
-    right: 50% !important;
-    transform: translatex(-50%) !important;
   }
 }
