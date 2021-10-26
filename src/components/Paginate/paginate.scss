@@ -85,7 +85,7 @@
   .paginate-buttons {
     height: 60px !important;
     .paginate-numbers {
-      width: calc(100%-100px);
+      max-width: calc(100%-100px);
     }
     .default-page,
     .active-page,
