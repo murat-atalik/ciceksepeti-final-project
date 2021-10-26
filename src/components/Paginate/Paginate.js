@@ -60,7 +60,7 @@ function Paginate({ pages, currentPage, setCurrentPage, params }) {
           className={currentPage === pages ? 'deactive-page' : 'next-page'}
           aria-label="next-page"
         >
-          {currentPage === pages ? 'Son' : `>>`}
+          {currentPage !== pages && `>>`}
         </button>
       </div>
     </>

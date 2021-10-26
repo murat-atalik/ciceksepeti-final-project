@@ -82,7 +82,18 @@
   }
 }
 @media only screen and (max-width: 500px) {
-  .paginate-numbers {
-    width: calc(100%-100px);
+  .paginate-buttons {
+    height: 60px !important;
+    .paginate-numbers {
+      width: calc(100%-100px);
+    }
+    .default-page,
+    .active-page,
+    .next-page,
+    .prev-page {
+      min-width: 48px !important;
+      max-width: 48px !important;
+      height: 48px !important;
+    }
   }
 }
