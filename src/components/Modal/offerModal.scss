@@ -187,6 +187,10 @@
 @media only screen and (max-width: 768px) {
   .offer-modal-wrapper {
     align-items: flex-start;
+    .offer-modal-wrapper-inner {
+      margin-left: auto !important;
+      margin-right: auto !important ;
+    }
     .offer-modal-wrapper-inner-title {
       width: 315px !important;
       margin-top: 1px;
@@ -220,6 +224,11 @@
     }
     .offer-modal-wrapper-buttons {
       margin-bottom: 10px;
+    }
+  }
+  .modal-details {
+    > .product-price {
+      font: normal normal bold 15px/20px Nunito;
     }
   }
 }

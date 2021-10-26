@@ -147,7 +147,7 @@
     }
   }
 }
-@media only screen and (max-width: 575px) {
+@media only screen and (max-width: 540px) {
   .account-detail-card {
     margin-top: 10px !important;
     width: 335px !important;
@@ -163,7 +163,6 @@
     > button {
       width: 108px !important;
       height: 30px !important;
-      margin-right: 49.75px !important;
     }
   }
 }
@@ -183,6 +182,7 @@
   .account-detail-card {
     margin-left: 10px !important;
     margin-right: 10px !important;
+    width: 100%;
     &-detail {
       margin-left: 10px;
     }
@@ -211,5 +211,8 @@
     &-detail {
       margin-left: auto;
     }
+  }
+  .account-button-container {
+    margin-left: 78px !important;
   }
 }
