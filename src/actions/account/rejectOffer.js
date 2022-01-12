@@ -23,7 +23,7 @@ export const fetchRejectOfferInfo = (id) => async (dispatch) => {
   dispatch(fetchRejectOfferStart());
   return axios
     .post(
-      `https://bootcampapi.techcs.io/api/fe/v1/account/reject-offer/${id}`,
+      `https://fe-bootcamp-api.herokuapp.com/api/fe/v1/account/reject-offer/${id}`,
       null,
       {
         headers: {

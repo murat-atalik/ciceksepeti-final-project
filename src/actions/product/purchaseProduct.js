@@ -22,7 +22,7 @@ export const fetchPurchaseProductInfo = (id, token) => async (dispatch) => {
   dispatch(fetchPurchaseProductStart());
   return axios
     .put(
-      `https://bootcampapi.techcs.io/api/fe/v1/product/purchase/${id}`,
+      `https://fe-bootcamp-api.herokuapp.com/api/fe/v1/product/purchase/${id}`,
       null,
       {
         headers: {

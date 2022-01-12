@@ -29,20 +29,24 @@ export const fetchUploadImageInfo = (image) => async (dispatch) => {
   file.append('file', image, image.name);
   dispatch(fetchUploadImageStart());
   return axios
-    .post('https://bootcampapi.techcs.io/api/fe/v1/file/upload/image', file, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('access-token')}`,
-        accept: 'application/json',
-        'Accept-Language': 'en-US,en;q=0.8',
-        'Content-Type': `multipart/form-data; boundary=${file.boundary}`,
-      },
-      onUploadProgress: (progressEvent) =>
-        dispatch(
-          fetchUploadImagePercent(
-            Math.floor((progressEvent.loaded * 100) / progressEvent.total)
-          )
-        ),
-    })
+    .post(
+      'https://fe-bootcamp-api.herokuapp.com/api/fe/v1/file/upload/image',
+      file,
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access-token')}`,
+          accept: 'application/json',
+          'Accept-Language': 'en-US,en;q=0.8',
+          'Content-Type': `multipart/form-data; boundary=${file.boundary}`,
+        },
+        onUploadProgress: (progressEvent) =>
+          dispatch(
+            fetchUploadImagePercent(
+              Math.floor((progressEvent.loaded * 100) / progressEvent.total)
+            )
+          ),
+      }
+    )
     .then((response) => dispatch(fetchUploadImageSuccess(response.data.url)))
     .catch((err) => dispatch(fetchUploadImageError(err)));
 };

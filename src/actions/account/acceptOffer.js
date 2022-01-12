@@ -22,7 +22,7 @@ export const fetchAcceptOfferInfo = (id) => async (dispatch) => {
   dispatch(fetchAcceptOfferStart());
   return axios
     .put(
-      `https://bootcampapi.techcs.io/api/fe/v1/account/accept-offer/${id}`,
+      `https://fe-bootcamp-api.herokuapp.com/api/fe/v1/account/accept-offer/${id}`,
       null,
       {
         headers: {
